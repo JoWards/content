@@ -26,7 +26,7 @@ Sensor interfaces are only proxies for the underlying device sensors. Consequent
 
 Therefore, feature detection for sensor APIs must include both detection of the APIs themselves and [defensive programming strategies (see below)](#defensive_programming).
 
-The examples below show three methods for detecting sensor APIs. Additionally you can put object instantiation inside a {{jsxref('statements/try...catch', 'try...catch')}} block. Notice that detection through the {{domxref('Navigator')}} interface is not one of the available options.
+The examples below show three methods for detecting sensor APIs. Additionally you can put object instantiation inside a {{jsxref('statements/try...catch', 'try...catch')}} block. Notice that detection through the {{domxref('Navigator')}} interface is not one of the available options.
 
 ```js
 if (typeof Gyroscope === "function") {
@@ -50,7 +50,7 @@ As stated in Feature Detection, checking for a particular sensor API is insuffic
 - Listening for errors thrown during its use.
 - Handling the errors gracefully so that the user experience is enhanced rather than degraded.
 
-The code example below illustrates these principles. The {{jsxref('statements/try...catch', 'try...catch')}} block catches errors thrown during sensor instantiation. It implements a handler for {{domxref('Sensor.onerror')}} to catch errors thrown during use. The only time anything is shown to the user is when [permissions](/en-US/docs/Web/API/Permissions_API) need to be requested and when the sensor type isn't supported by the device.
+The code example below illustrates these principles. The {{jsxref('statements/try...catch', 'try...catch')}} block catches errors thrown during sensor instantiation. It listens for {{domxref('Sensor.error_event', 'error')}} events to catch errors thrown during use. The only time anything is shown to the user is when [permissions](/en-US/docs/Web/API/Permissions_API) need to be requested and when the sensor type isn't supported by the device.
 
 > **Note:** If a feature policy blocks use of a feature it is because your code is inconsistent with the policies set on your server. This is not something that would ever be shown to a user. The {{httpheader('Feature-Policy')}} HTTP header article contains implementation instructions.
 
@@ -96,15 +96,15 @@ navigator.permissions.query({ name: 'accelerometer' })
 });
 ```
 
-An alternative approach is to attempt to use the error and listen for the `SecurityError`.
+An alternative approach is to attempt to use the sensor and listen for the `SecurityError`.
 
 ```js
 const sensor = new AbsoluteOrientationSensor();
 sensor.start();
-sensor.onerror = event => {
+sensor.addEventListener('error', error => {
   if (event.error.name === 'SecurityError')
     console.log("No permissions to use AbsoluteOrientationSensor.");
-};
+});
 ```
 
 The following table describes for each sensor type, the name required for the Permissions API, the {{HTMLElement('iframe')}} element's `allow` attribute and the {{httpheader('Feature-Policy')}} directive.
@@ -122,7 +122,7 @@ The following table describes for each sensor type, the name required for the Pe
 
 ### Readings
 
-Sensor readings are received through the {{domxref('Sensor.onreading')}} callback which is inherited by all sensor types. Reading frequency is decided by you, accomplished with an option passed to a sensor's constructor. The option is a number that specifies the number of readings per second. A whole number or decimal may be used, the latter for frequencies less than a second. The actual reading frequency depends device hardware and consequently may be less than requested.
+Sensor readings are received through the {{domxref('Sensor.reading_event', 'reading')}} event callback which is inherited by all sensor types. Reading frequency is decided by you, accomplished with an option passed to a sensor's constructor. The option is a number that specifies the number of readings per second. A whole number or decimal may be used, the latter for frequencies less than a second. The actual reading frequency depends device hardware and consequently may be less than requested.
 
 The following example illustrates this using the {{domxref('Magnetometer')}} sensor.
 

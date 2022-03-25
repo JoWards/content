@@ -50,7 +50,7 @@ To keep your text readable, use a text color that contrasts well with the backgr
 
 The {{Glossary("W3C")}} defines a good color mix with an algorithm that calculates luminosity ratio between foreground and background. The calculation may seem pretty complicated, but we can rely on tools to do the job for us.
 
-Let's download and install the Paciello Group's [Color Contrast Analyser](http://www.paciellogroup.com/resources/contrastanalyser/).
+Let's download and install the Paciello Group's [Color Contrast Analyser](https://www.tpgi.com/color-contrast-checker/).
 
 > **Note:** Alternatively you can find a number of contrast checkers online, such as WebAIM's [Color Contrast Checker](https://webaim.org/resources/contrastchecker/). We suggest a local checker because it comes packaged with an on-screen color picker to find out a color value.
 
@@ -85,7 +85,7 @@ Relative units are expressed in `em`, `%` and `rem`:
 - Percent-based sizes: `%`
   - : This unit tells your browser that an element's font size must be N% of the previous element whose font size was expressed. If no parent can be found, the default font size within the browser is considered as the base size for the calculation (usually the equivalent of 16 pixels).
 - Em-based sizes: `em`
-  - : This unit is calculated the same way as percents, except that you compute in portions of 1 and not portions of 100. It is said that "em" is the width of a capital “M” in the alphabet (roughly speaking, an “M” fits into a square).
+  - : This unit is calculated the same way as percents, except that you compute in portions of 1 and not portions of 100. It is said that "em" is the width of a capital "M" in the alphabet (roughly speaking, an "M" fits into a square).
 - Rem-based sizes: `rem`
   - : This unit is proportional to the root element's font size and is expressed as portions of 1, like `em`.
 

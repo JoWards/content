@@ -18,7 +18,7 @@ browser-compat: css.properties.cursor
 
 The **`cursor`** [CSS](/en-US/docs/Web/CSS) property sets the mouse cursor, if any, to show when the mouse pointer is over an element.
 
-The curser setting should inform users of the mouse operations that can be performed at the current location, including: text selection, activating help or context menus, copying content, resizing tables, and so on.
+The cursor setting should inform users of the mouse operations that can be performed at the current location, including: text selection, activating help or context menus, copying content, resizing tables, and so on.
 You can specify either the _type_ of cursor using a keyword, or load a specific icon to use (with optional fallback images and mandatory keyword as a final fallback).
 
 {{EmbedInteractiveExample("pages/css/cursor.html")}}
@@ -59,7 +59,7 @@ Each `<url>` may be optionally followed by a pair of space-separated numbers, wh
 
 - `<url>` {{optional_inline}}
   - : A `url(…)` or a comma separated list `url(…), url(…), …`, pointing to an image file.
-    More than one {{cssxref("url()")}} may be provided as fallbacks, in case some cursor image types are not supported.
+    More than one {{cssxref("url", "url()")}} may be provided as fallbacks, in case some cursor image types are not supported.
     A non-URL fallback (one or more of the keyword values) _must_ be at the end of the fallback list.
 - `<x>` `<y>` {{optional_inline}}
   - : Optional x- and y-coordinates indicating the cursor hotspot; the precise position within the cursor that is being pointed to.
@@ -358,7 +358,7 @@ Each `<url>` may be optionally followed by a pair of space-separated numbers, wh
 While the specification does not limit the `cursor` image size, {{Glossary("user agent", "user agents")}} commonly restrict them to avoid potential misuse.
 For example, on Firefox and Chromium cursor images are restricted to 32x32 pixels by default, and cursor changes using larger images will generally just be ignored.
 
-Check the {{anch("Browser compatibility")}} table for any notes on cursor size limits.
+Check the [Browser compatibility](#browser_compatibility) table for any notes on cursor size limits.
 
 ### Supported image file formats
 
@@ -402,4 +402,4 @@ Cursor changes that intersect toolbar areas are commonly blocked to avoid spoofi
 ## See also
 
 - {{cssxref("pointer-events")}}
-- {{cssxref("url()", "url()")}} function
+- {{cssxref("url", "url()")}} function

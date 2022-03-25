@@ -153,7 +153,7 @@ This HTML will be rendered as a highlighted box, like:
 ```plain
 > **Callout:** **This is how you write a callout**.
 >
-> It can have multiple paragaphs.
+> It can have multiple paragraphs.
 ```
 
 This will produce the following HTML:
@@ -460,7 +460,7 @@ Writers will be able to use the HTML {{HTMLElement("sup")}} and {{HTMLElement("s
 
   , prefer words like "first".
 
-- For footnotes, don’t mark up the footnote references with, e.g., `<sup>[1]</sup>`; it’s unnecessary.
+- For footnotes, don't mark up the footnote references with, e.g., `<sup>[1]</sup>`; it's unnecessary.
 
 ### Discussion reference
 
@@ -470,7 +470,7 @@ This issue was resolved in <https://github.com/mdn/content/issues/4578>.
 
 The _page summary_ is the first "content" paragraph in a page—the first text that appears after the page front matter and any [sidebar or page banner macros](#kumascript).
 
-This summary is used for search engine optimisation (SEO) and also automatically included alongside page listings by some macros.
+This summary is used for search engine optimization (SEO) and also automatically included alongside page listings by some macros.
 The first paragraph should therefore be both succinct and informative.
 
 ### Discussion reference
@@ -483,7 +483,7 @@ Writers will be able to include KumaScript macro calls in prose content:
 
 ```plain
 
-The **`margin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property
+The **`margin`** [CSS](/en-US/docs/Web/CSS) property
 sets the margin area on all four sides of an element. It is a shorthand for
 \{{cssxref("margin-top")}}, \{{cssxref("margin-right")}}, \{{cssxref("margin-bottom")}},
 and \{{cssxref("margin-left")}}.

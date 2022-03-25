@@ -9,7 +9,7 @@ tags:
 ---
 {{FirefoxSidebar}}
 
-This article provides information about the changes in Firefox 96 that will affect developers. Firefox 96 was released on January 11, 2022.
+This article provides information about the changes in Firefox 96 that affect developers. Firefox 96 was released on January 11, 2022.
 
 ## Changes for web developers
 
@@ -67,6 +67,8 @@ No notable changes.
 - `WebDriver:Print` has been enhanced to support page ranges when printing documents as PDF ({{bug(1678347)}}).
 
 ## Changes for add-on developers
+
+- Added {{WebExtAPIRef("runtime.getFrameId")}} that gets the frame ID of any window global or frame element from a content script ({{bug(1733104)}}).
 
 ## Older versions
 

@@ -15,6 +15,8 @@ The **`WorkerGlobalScope`** interface of the [Web Workers API](/en-US/docs/Web/A
 
 This interface is usually specialized by each worker type: {{domxref("DedicatedWorkerGlobalScope")}} for dedicated workers, {{domxref("SharedWorkerGlobalScope")}} for shared workers, and {{domxref("ServiceWorkerGlobalScope")}} for [ServiceWorker](/en-US/docs/Web/API/Service_Worker_API). The `self` property returns the specialized scope for each context.
 
+{{InheritanceDiagram}}
+
 ## Properties
 
 _This interface inherits properties from the {{domxref("EventTarget")}} interface and `WindowOrWorkerGlobalScope` and {{domxref("WindowEventHandlers")}} mixins._
@@ -49,23 +51,17 @@ _This interface inherits properties from the {{domxref("EventTarget")}} interfac
 ## Events
 
 - `error`
-  - : Fired when an error occurred.
-    Also available via the {{domxref("WorkerGlobalScope.onerror")}} property.
+  - : Fires when an error occurred.
 - `offline`
-  - : Fired when the browser has lost access to the network and the value of `navigator.onLine` switched to `false`.
-    Also available via the {{domxref("WorkerGlobalScope.onoffline")}} property.
+  - : Fires when the browser has lost access to the network and the value of `navigator.onLine` switched to `false`.
 - `online`
-  - : Fired when the browser has gained access to the network and the value of `navigator.onLine` switched to `true`.
-    Also available via the {{domxref("WorkerGlobalScope.ononline")}} property.
+  - : Fires when the browser has gained access to the network and the value of `navigator.onLine` switched to `true`.
 - [`languagechange`](/en-US/docs/Web/API/WorkerGlobalScope/languagechange_event)
-  - : Fired at the global/worker scope object when the user's preferred languages change.
-    Also available via the {{domxref("WorkerGlobalScope.onlanguagechange")}} property.
+  - : Fires at the global/worker scope object when the user's preferred languages change.
 - `rejectionhandled` {{non-standard_inline}}
-  - : An event handler for handled [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) rejection events.
-    Also available via the {{domxref("WorkerGlobalScope.onrejectionhandled")}} property.
+  - : Fires on handled [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) rejection events.
 - `unhandledrejection` {{non-standard_inline}}
-  - : An event handler for unhandled [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) rejection events.
-    Also available via the {{domxref("WorkerGlobalScope.onunhandledrejection")}} property.
+  - : Fires on unhandled [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) rejection events.
 
 ## Methods
 

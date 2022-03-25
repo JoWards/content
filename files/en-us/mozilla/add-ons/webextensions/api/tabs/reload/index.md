@@ -22,7 +22,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var reloading = browser.tabs.reload(
+let reloading = browser.tabs.reload(
   tabId,            // optional integer
   reloadProperties  // optional object
 )
@@ -41,7 +41,7 @@ var reloading = browser.tabs.reload(
 
 ### Return value
 
-A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with no arguments when the tab has been reloaded. If any error occurs, the promise will be rejected with an error message.
+A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with no arguments when the tab has been reloaded. If any error occurs, the promise will be rejected with an error message.
 
 ## Examples
 
@@ -68,7 +68,7 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 
-var reloading = browser.tabs.reload(2, {bypassCache: true});
+let reloading = browser.tabs.reload(2, {bypassCache: true});
 reloading.then(onReloaded, onError);
 ```
 

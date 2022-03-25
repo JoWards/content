@@ -3,33 +3,31 @@ title: HTML Sanitizer API
 slug: Web/API/HTML_Sanitizer_API
 tags:
   - HTML Sanitizer API
+  - Experimental
   - Landing
   - Web API
-  - santitize
+  - sanitize
 ---
 {{SeeCompatTable}}{{securecontext_header}}{{DefaultAPISidebar("HTML Sanitizer API")}}
 
-The **HTML Sanitizer API** allow developers to take untrusted strings of HTML and {{domxref('Document')}} or {{domxref('DocumentFragment')}} objects, and sanitize them for safe insertion into a document’s DOM.
+The **HTML Sanitizer API** allow developers to take untrusted strings of HTML and {{domxref('Document')}} or {{domxref('DocumentFragment')}} objects, and sanitize them for safe insertion into a document's DOM.
 
 ## Concepts and usage
 
-Web applications often need to work with untrusted HTML on the client side, for example, as part of a client-side templating solution or for rendering user generated content, or when including data in a frame from other another site.
+Web applications often need to work with untrusted HTML on the client side, for example, as part of a client-side templating solution or for rendering user generated content, or when including data in a frame from another site.
 The Sanitizer API allows for rendering of this potentially untrusted HTML in a safe manner.
 
 To access the API you would use the {{domxref('Sanitizer.Sanitizer()','Sanitizer()')}} constructor to create and configure a {{domxref('Sanitizer')}} instance.
 The configuration options parameter allows you to specify the allowed and dis-allowed elements and attributes, and to enable custom elements and comments.
 
 The most common use-case - preventing XSS - is handled by the default configuration.
-Creating a {{domxref('Sanitizer.Sanitizer')}} with a custom configuration is necessary only to handle additional, application-specific use cases.
+Creating a {{domxref("Sanitizer.Sanitizer", "Sanitizer()")}} with a custom configuration is necessary only to handle additional, application-specific use cases.
 
 The API has three main methods for sanitizing data:
 
-1. {{domxref('Element.setHTML()')}} parses and sanitizes a string of HTML and immediately inserts it into the DOM as a child of the current element.
-  This is essentially "safe" version of {{domxref('Element.innerHTML')}}, and should be used instead of `innerHTML` when inserting untrusted data.
-2. {{domxref('Sanitizer.sanitizeFor()')}} parses and sanitizes a string of HTML for later insertion into the DOM.
-  This might be used when the target element for the string is not always ready/available for update.
-3. {{domxref('Sanitizer.sanitize()')}} sanitizes data that is in a {{domxref('Document')}} or {{domxref('DocumentFragment')}}.
-  It might be used, for example, to sanitize a {{domxref('Document')}} instance in a frame.
+1. {{domxref('Element.setHTML()')}} parses and sanitizes a string of HTML and immediately inserts it into the DOM as a child of the current element. This is essentially a "safe" version of {{domxref('Element.innerHTML')}}, and should be used instead of `innerHTML` when inserting untrusted data.
+2. {{domxref('Sanitizer.sanitizeFor()')}} parses and sanitizes a string of HTML for later insertion into the DOM. This might be used when the target element for the string is not always ready/available for update.
+3. {{domxref('Sanitizer.sanitize()')}} sanitizes data that is in a {{domxref('Document')}} or {{domxref('DocumentFragment')}}. It might be used, for example, to sanitize a {{domxref('Document')}} instance in a frame.
 
 ### Parsing and sanitizing strings
 
@@ -128,10 +126,10 @@ const sanitizer = new Sanitizer();  // Default sanitizer;
 
 // Get the frame and its Document object
 const frame_element = document.getElementById("userFrame")
-const unsantitized_frame_tree = frame_element.contentWindow.document;
+const unsanitized_frame_tree = frame_element.contentWindow.document;
 
 // Sanitize the document tree and update the frame.
-const sanitized_frame_tree = sanitizer.sanitize(unsanititized_frame_tree);
+const sanitized_frame_tree = sanitizer.sanitize(unsanitized_frame_tree);
 frame_element.replaceChildren(sanitized_frame_tree);
 ```
 

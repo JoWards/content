@@ -104,8 +104,8 @@ h1 {
 h1 {
   counter-reset: reversed(chapter) reversed(section) 1 page;
   /* Sets the reversed flag on the chapter and section counters.
-     Sets the chapter and page counters to 0,
-     and the section counter to 1 */
+     Sets the chapter to the number of elements, the section counter to 1,
+     and the page counters to 0*/
 }
 ```
 
@@ -123,5 +123,5 @@ h1 {
 - {{cssxref("counter-increment")}}
 - {{cssxref("counter-set")}}
 - {{cssxref("@counter-style")}}
-- {{cssxref("counter()")}} and {{cssxref("counters()")}} functions
+- {{cssxref("counter", "counter()")}} and {{cssxref("counters", "counters()")}} functions
 - {{cssxref("content")}} property

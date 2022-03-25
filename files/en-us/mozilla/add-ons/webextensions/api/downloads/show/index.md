@@ -22,7 +22,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var showing = browser.downloads.show(
+let showing = browser.downloads.show(
   downloadId             // integer
 )
 ```
@@ -46,7 +46,7 @@ This example shows the most recently downloaded item:
 
 ```js
 function onShowing(success) {
-  console.log(`Showing download item: ${success}`);
+  console.log(`Showing download item: ${success}`);
 }
 
 function onError(error) {
@@ -56,12 +56,12 @@ function onError(error) {
 function openDownload(downloadItems) {
     if (downloadItems.length > 0) {
       latestDownloadId = downloadItems[0].id;
-      var showing = browser.downloads.show(latestDownloadId);
+      let showing = browser.downloads.show(latestDownloadId);
       showing.then(onShowing, onError);
     }
   }
 
-var searching = browser.downloads.search({
+let searching = browser.downloads.search({
   limit: 1,
   orderBy: ["-startTime"]
 });

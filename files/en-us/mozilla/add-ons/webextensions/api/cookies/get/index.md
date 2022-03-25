@@ -24,7 +24,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var getting = browser.cookies.get(
+let getting = browser.cookies.get(
   details                // object
 )
 ```
@@ -53,7 +53,7 @@ var getting = browser.cookies.get(
 
 ### Return value
 
-A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with a {{WebExtAPIRef('cookies.Cookie', 'Cookie')}} object containing details about the cookie, or `null` if the cookie was not found.
+A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with a {{WebExtAPIRef('cookies.Cookie', 'Cookie')}} object containing details about the cookie, or `null` if the cookie was not found.
 
 ## Browser compatibility
 
@@ -71,14 +71,14 @@ function logCookie(cookie) {
 }
 
 function getCookie(tabs) {
-  var getting = browser.cookies.get({
+  let getting = browser.cookies.get({
     url: tabs[0].url,
     name: "favorite-color"
   });
   getting.then(logCookie);
 }
 
-var getActive = browser.tabs.query({
+let getActive = browser.tabs.query({
   active: true,
   currentWindow: true
 });

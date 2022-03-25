@@ -42,7 +42,7 @@ Video providers (such as the [Blender Foundation](https://www.blender.org/founda
 
 ## Modifications to the HTML and CSS
 
-This section summarizes the modifications made to the previous article's code in order to facilitate the addition of subtitles to the video. If you are not interested in this, and just want to get straight into the JavaScript and more relevant CSS, skip to the {{ anch("Subtitle implementation") }} section.
+This section summarizes the modifications made to the previous article's code in order to facilitate the addition of subtitles to the video. If you are not interested in this, and just want to get straight into the JavaScript and more relevant CSS, skip to the [Subtitle implementation](#subtitle_implementation) section.
 
 In this example we are using a different video, [Sintel](https://www.sintel.org/), as it actually has some speech in it and therefore is better for illustrating how subtitles work!
 
@@ -195,7 +195,7 @@ var createMenuItem = function(id, lang, label) {
 }
 ```
 
-This function builds the required {{ htmlelement("li") }} and {{ htmlelement("button") }} elements, and returns them so they can be added to the subtitles menu list. It also sets up the required event listeners on the button to toggle the relevant subtitle set on or off. This is done by setting the required subtlte's `mode` attribute to `showing`, and setting the others to `hidden`.
+This function builds the required {{ htmlelement("li") }} and {{ htmlelement("button") }} elements, and returns them so they can be added to the subtitles menu list. It also sets up the required event listeners on the button to toggle the relevant subtitle set on or off. This is done by setting the required subtitle's `mode` attribute to `showing`, and setting the others to `hidden`.
 
 Once the menu is built, it is then inserted into the DOM at the bottom of the videoContainer.
 
@@ -269,9 +269,11 @@ For example, to change the text color of the text track cues you can write:
 
 If the WebVTT file uses [voice spans](https://dev.w3.org/html5/webvtt/#dfn-webvtt-cue-voice-span), which allow cues to be defined as having a particular "voice":
 
-    0
-    00:00:00.000 --> 00:00:12.000
-    <v Test>[Test]</v>
+```
+0
+00:00:00.000 --> 00:00:12.000
+<v Test>[Test]</v>
+```
 
 Then this specific 'voice' will be stylable like so:
 

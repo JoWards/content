@@ -22,7 +22,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var removing = browser.tabs.remove(
+let removing = browser.tabs.remove(
   tabIds          // integer or integer array
 )
 ```
@@ -34,7 +34,7 @@ var removing = browser.tabs.remove(
 
 ### Return value
 
-A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with no arguments when all the specified tabs have been removed or their `beforeunload` prompts have been handled. If any error occurs, the promise will be rejected with an error message.
+A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with no arguments when all the specified tabs have been removed or their `beforeunload` prompts have been handled. If any error occurs, the promise will be rejected with an error message.
 
 ## Examples
 
@@ -49,7 +49,7 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 
-var removing = browser.tabs.remove(2);
+let removing = browser.tabs.remove(2);
 removing.then(onRemoved, onError);
 ```
 
@@ -64,7 +64,7 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 
-var removing = browser.tabs.remove([15, 14, 1]);
+let removing = browser.tabs.remove([15, 14, 1]);
 removing.then(onRemoved, onError);
 ```
 

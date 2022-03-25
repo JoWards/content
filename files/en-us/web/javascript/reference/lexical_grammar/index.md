@@ -112,7 +112,7 @@ In this case, the `console.log()` call is never issued, since it's inside a comm
 
 A specialized third comment syntax, the **hashbang comment**, is in the process of being standardized in ECMAScript (see the [Hashbang Grammar proposal](https://github.com/tc39/proposal-hashbang)).
 
-A hashbang comment behaves exactly like a single line-only (`//`) comment. Instead, it begins with `#!` and **is only valid at the absolute start of a script or module**. Note also that no whitespace of any kind is permitted before the `#!`. The comment consists of all the characters after `#!` up to the end of the first line; only one such comment is permitted.
+A hashbang comment behaves exactly like a single line-only (`//`) comment. Instead, it begins with `#!` and **is only valid at the absolute start of a script or module**. Note also that no whitespace of any kind is permitted before the `#!`. The comment consists of all the characters after `#!` up to the end of the first line; only one such comment is permitted.
 
 The hashbang comment specifies the path to a specific JavaScript interpreter that you want to use to execute the script. An example is as follows:
 
@@ -249,7 +249,7 @@ null
 
 ### Boolean literal
 
-See also {{jsxref("Boolean")}} for more information.
+See also [boolean type](/en-US/docs/Web/JavaScript/Data_structures#boolean_type) for more information.
 
 ```js
 true
@@ -258,7 +258,7 @@ false
 
 ### Numeric literals
 
-The {{jsxref("Number")}} and {{jsxref("BigInt")}} types use numeric literals.
+The [Number](/en-US/docs/Web/JavaScript/Data_structures#number_type) and [BigInt](/en-US/docs/Web/JavaScript/Data_structures#bigint_type) types use numeric literals.
 
 #### Decimal
 
@@ -271,19 +271,19 @@ The {{jsxref("Number")}} and {{jsxref("BigInt")}} types use numeric literals.
 0777 // parsed as octal, 511 in decimal
 ```
 
-Note that decimal literals can start with a zero (`0`) followed by another decimal digit, but If all digits after the leading `0` are smaller than 8, the number is interpreted as an octal number. This won't throw in JavaScript, see [bug 957513](https://bugzilla.mozilla.org/show_bug.cgi?id=957513). See also the page about {{jsxref("parseInt", "parseInt()")}}
+Note that decimal literals can start with a zero (`0`) followed by another decimal digit, but If all digits after the leading `0` are smaller than 8, the number is interpreted as an octal number. This won't throw in JavaScript, see [bug 957513](https://bugzilla.mozilla.org/show_bug.cgi?id=957513). See also the page about {{jsxref("parseInt", "parseInt()")}}
 
 ##### Exponential
 
-The decimal exponential literal is specified by the following format: `beN`; where `b` is a base number (integer or floating), followed by `e` char (which serves as separator or _exponent indicator_) and `N`, which is *exponent* or *power* number – a signed integer (as per 2019 ECMA-262 specs):
+The decimal exponential literal is specified by the following format: `beN`; where `b` is a base number (integer or floating), followed by `e` char (which serves as separator or _exponent indicator_) and `N`, which is *exponent* or *power* number – a signed integer (as per 2019 ECMA-262 specs):
 
 ```js
-0e-5   // => 0
-0e+5   // => 0
-5e1    // => 50
+0e-5   // => 0
+0e+5   // => 0
+5e1    // => 50
 175e-2 // => 1.75
-1e3    // => 1000
-1e-3   // => 0.001
+1e3    // => 1000
+1e-3   // => 0.001
 ```
 
 #### Binary
@@ -311,7 +311,7 @@ var m = 0o644; // 420
 
 #### Hexadecimal
 
-Hexadecimal number syntax uses a leading zero followed by a lowercase or uppercase Latin letter "X" (`0x` or `0X)`. If the digits after 0x are outside the range (0123456789ABCDEF), the following {{jsxref("SyntaxError")}} is thrown: "Identifier starts immediately after numeric literal".
+Hexadecimal number syntax uses a leading zero followed by a lowercase or uppercase Latin letter "X" (`0x` or `0X`). If the digits after 0x are outside the range (0123456789ABCDEF), the following {{jsxref("SyntaxError")}} is thrown: "Identifier starts immediately after numeric literal".
 
 ```js
 0xFFFFFFFFFFFFFFFFF // 295147905179352830000
@@ -321,12 +321,12 @@ Hexadecimal number syntax uses a leading zero followed by a lowercase or upperca
 
 #### BigInt literal
 
-The {{jsxref("BigInt")}} type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. BigInt literals are created by appending `n` to the end of an integer.
+The [BigInt](/en-US/docs/Web/JavaScript/Data_structures#bigint_type) type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. BigInt literals are created by appending `n` to the end of an integer.
 
 ```js
-123456789123456789n     // 123456789123456789
-0o777777777777n         // 68719476735
-0x123456789ABCDEFn      // 81985529216486895‬
+123456789123456789n     // 123456789123456789
+0o777777777777n         // 68719476735
+0x123456789ABCDEFn      // 81985529216486895
 0b11101001010101010101n // 955733
 ```
 
@@ -405,7 +405,7 @@ See also {{jsxref("Array")}} for more information.
 
 ### String literals
 
-A string literal is zero or more Unicode code points enclosed in single or double quotes. Unicode code points may also be represented by an escape sequence. All code points may appear literally in a string literal except for these closing quote code points:
+A [string](/en-US/docs/Web/JavaScript/Data_structures#string_type) literal is zero or more Unicode code points enclosed in single or double quotes. Unicode code points may also be represented by an escape sequence. All code points may appear literally in a string literal except for these closing quote code points:
 
 - U+005C \ (backslash),
 - U+000D \<CR>,
@@ -483,7 +483,6 @@ tag `string text ${expression} string text`
 
 Some [JavaScript statements](/en-US/docs/Web/JavaScript/Reference/Statements) must be terminated with semicolons and are therefore affected by automatic semicolon insertion (ASI):
 
-- Empty statement
 - `let`, `const`, variable statement
 - `import`, `export`, module declaration
 - Expression statement
@@ -547,7 +546,7 @@ a + b;
 - [Lexical grammar in the ECMAScript specification](https://tc39.es/ecma262/#sec-ecmascript-language-lexical-grammar)
 - [Jeff Walden: Binary and octal numbers](https://whereswalden.com/2013/08/12/micro-feature-from-es6-now-in-firefox-aurora-and-nightly-binary-and-octal-numbers/)
 - [Mathias Bynens: JavaScript character escape sequences](https://mathiasbynens.be/notes/javascript-escapes)
-- {{jsxref("Boolean")}}
-- {{jsxref("Number")}}
+- [Boolean](/en-US/docs/Web/JavaScript/Data_structures#boolean_type)
+- [Number](/en-US/docs/Web/JavaScript/Data_structures#number_type)
+- [string](/en-US/docs/Web/JavaScript/Data_structures#string_type)
 - {{jsxref("RegExp")}}
-- {{jsxref("String")}}

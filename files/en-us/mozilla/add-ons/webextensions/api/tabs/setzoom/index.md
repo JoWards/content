@@ -22,7 +22,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var zooming = browser.tabs.setZoom(
+let zooming = browser.tabs.setZoom(
   tabId,           // optional integer
   zoomFactor       // number
 )
@@ -33,7 +33,7 @@ var zooming = browser.tabs.setZoom(
 - `tabId`{{optional_inline}}
   - : `integer`. The ID of the tab to zoom. Defaults to the active tab of the current window.
 - `zoomFactor`
-  - : `number`. The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor. Otherwise, this must be  a number between 0.3 and 5, specifying a zoom factor.
+  - : `number`. The new zoom factor. Use a value of 0 here to set the tab to its current default zoom factor. Otherwise, this must be  a number between 0.3 and 5, specifying a zoom factor.
 
 ### Return value
 
@@ -48,18 +48,18 @@ function onError(error) {
   console.log(`Error: ${error}`);
 }
 
-var setting = browser.tabs.setZoom(2);
+let setting = browser.tabs.setZoom(2);
 setting.then(null, onError);
 ```
 
-Set the zoom factor for the tab whose ID is 16 tab to 0.5:
+Set the zoom factor for the tab whose ID is 16 tab to 0.5:
 
 ```js
 function onError(error) {
   console.log(`Error: ${error}`);
 }
 
-var setting = browser.tabs.setZoom(16, 0.5);
+let setting = browser.tabs.setZoom(16, 0.5);
 setting.then(null, onError);
 ```
 

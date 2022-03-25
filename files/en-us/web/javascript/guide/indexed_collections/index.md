@@ -290,7 +290,7 @@ myArray.unshift('4', '5')
 // myArray becomes ["4", "5", "1", "2", "3"]
 ```
 
-{{jsxref("Array.slice", "slice(start_index, upto_index)")}} extracts a section of an array and returns a new array.
+{{jsxref("Array.slice", "slice(start_index, up_to_index)")}} extracts a section of an array and returns a new array.
 
 ```js
 let myArray = new Array('a', 'b', 'c', 'd', 'e')
@@ -457,10 +457,12 @@ for (let i = 0; i < 4; i++) {
 
 This example creates an array with the following rows:
 
-    Row 0: [0, 0] [0, 1] [0, 2] [0, 3]
-    Row 1: [1, 0] [1, 1] [1, 2] [1, 3]
-    Row 2: [2, 0] [2, 1] [2, 2] [2, 3]
-    Row 3: [3, 0] [3, 1] [3, 2] [3, 3]
+```
+Row 0: [0, 0] [0, 1] [0, 2] [0, 3]
+Row 1: [1, 0] [1, 1] [1, 2] [1, 3]
+Row 2: [2, 0] [2, 1] [2, 2] [2, 3]
+Row 3: [3, 0] [3, 1] [3, 2] [3, 3]
+```
 
 ### Using arrays to store other properties
 

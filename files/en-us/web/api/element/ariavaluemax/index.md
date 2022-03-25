@@ -15,14 +15,7 @@ browser-compat: api.Element.ariaValueMax
 
 The **`ariaValueMax`** property of the {{domxref("Element")}} interface reflects the value of the [`aria-valuemax`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuemax) attribute, which defines the maximum allowed value for a range widget.
 
-## Syntax
-
-```js
-var ariaValueMax = element.ariaValueMax;
-element.ariaValueMax = ariaValueMax
-```
-
-### Value
+## Value
 
 A {{domxref("DOMString")}} which contains a number.
 
@@ -33,7 +26,7 @@ In this example the [`aria-valuemax`](/en-US/docs/Web/Accessibility/ARIA/Attribu
 ```html
 <div role="slider" aria-valuenow="1"
   aria-valuemin="1" aria-valuemax="7"
-	aria-valuetext="Sunday">
+  aria-valuetext="Sunday">
 ```
 
 ```js

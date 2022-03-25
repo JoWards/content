@@ -36,7 +36,7 @@ Values of this type are objects, which can contain the following properties:
 
 ## Examples
 
-In the following snippet, the {{WebExtAPIRef("cookies.getAllCookieStores()")}} method is used to retrieve all the cookie stores currently available in the browser, and print out each cookie store ID, and the tabs that currently share each cookie store.
+In the following snippet, the {{WebExtAPIRef("cookies.getAllCookieStores()")}} method is used to retrieve all the cookie stores currently available in the browser, and print out each cookie store ID, and the tabs that currently share each cookie store.
 
 ```js
 function logStores(cookieStores) {
@@ -45,7 +45,7 @@ function logStores(cookieStores) {
   }
 }
 
-var getting = browser.cookies.getAllCookieStores();
+let getting = browser.cookies.getAllCookieStores();
 getting.then(logStores);
 ```
 
@@ -53,7 +53,7 @@ The following code snippet gets all cookie stores and then logs the total number
 
 ```js
 browser.cookies.getAllCookieStores().then((stores) => {
-  var incognitoStores = stores.map(store => store.incognito);
+  let incognitoStores = stores.map(store => store.incognito);
   console.log(`Of ${stores.length} cookie stores, ${incognitoStores.length} are incognito.`);
 });
 ```

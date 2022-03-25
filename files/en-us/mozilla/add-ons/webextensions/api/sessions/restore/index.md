@@ -21,7 +21,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var restoringSession = browser.sessions.restore(
+let restoringSession = browser.sessions.restore(
   sessionId             // string
 )
 ```
@@ -62,7 +62,7 @@ function onError(error) {
 }
 
 browser.browserAction.onClicked.addListener(function() {
-  var gettingSessions = browser.sessions.getRecentlyClosed({
+  let gettingSessions = browser.sessions.getRecentlyClosed({
     maxResults: 1
   });
   gettingSessions.then(restoreMostRecent, onError);
@@ -106,4 +106,4 @@ browser.browserAction.onClicked.addListener(function() {
 
 ## Known issues
 
-[Bug 1538119](https://bugzilla.mozilla.org/show_bug.cgi?id=1538119) -  Duplicate sessionId in browser.sessions.getRecentlyClosed() after "Restore previous session"
+[Bug 1538119](https://bugzilla.mozilla.org/show_bug.cgi?id=1538119) -  Duplicate sessionId in browser.sessions.getRecentlyClosed() after "Restore previous session"

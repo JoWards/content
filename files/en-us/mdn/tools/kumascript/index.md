@@ -129,7 +129,7 @@ When the wiki makes a call to the KumaScript service, it passes along some conte
 - `env.id`
   - : A short, unique ID for the current MDN document
 - `env.files`
-  - : An array of the files attached to the current MDN document; each object in the array is as described under {{ anch("File objects") }} below
+  - : An array of the files attached to the current MDN document; each object in the array is as described under [File objects](#file_objects) below
 - `env.review_tags`
   - : An array of the review tags on the article ("technical", "editorial", etc.)
 - `env.locale`
@@ -319,7 +319,7 @@ On some pages, you'll see a scripting error like this:
 Syntax error at line 436, column 461: Expected valid JSON object as the parameter of the preceding macro but...
 ```
 
-If you edit the page, you’ll probably see a macro like this at the bottom of the page:
+If you edit the page, you'll probably see a macro like this at the bottom of the page:
 
 ```plain
 \{{ wiki.languages({ "zh-tw": "zh_tw/Core_JavaScript_1.5_教學/JavaScript_概要", ... }) }}

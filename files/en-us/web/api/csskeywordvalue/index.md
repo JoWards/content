@@ -17,9 +17,11 @@ The **`CSSKeywordValue`** interface of the [CSS Typed Object Model API](/en-US/d
 
 The interface instance name is a {{Glossary("stringifier")}} meaning that when used anywhere a string is expected it will return the value of `CSSKeyword.value`.
 
+{{InheritanceDiagram}}
+
 ## Constructor
 
-- {{domxref("CSSKeywordValue.CSSKeywordValue()")}}
+- {{domxref("CSSKeywordValue.CSSKeywordValue", "CSSKeywordValue()")}}
   - : Creates a new `CSSKeywordValue` object.
 
 ## Properties

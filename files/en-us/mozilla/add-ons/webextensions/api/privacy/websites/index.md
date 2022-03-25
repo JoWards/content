@@ -65,7 +65,7 @@ Default values for these properties tend to vary across browsers.
   - : A {{WebExtAPIRef("types.BrowserSetting")}} object whose underlying value is a boolean. If `false`, the browser blocks [third-party cookies](/en-US/docs/Web/HTTP/Cookies#third-party_cookies).
 - `trackingProtectionMode`
 
-  - : "Tracking protection" is a browser feature that blocks requests made to domains that are known to engage in cross-site tracking of users. Sites that track users are most commonly third-party advertising and analytics sites. This setting is a {{WebExtAPIRef("types.BrowserSetting")}} object that determines whether the browser should enable tracking protection. Its underlying value is a string that may take one of three values:
+  - : "Tracking protection" is a browser feature that blocks requests made to domains that are known to engage in cross-site tracking of users. Sites that track users are most commonly third-party advertising and analytics sites. This setting is a {{WebExtAPIRef("types.BrowserSetting")}} object that determines whether the browser should enable tracking protection. Its underlying value is a string that may take one of three values:
 
     - `"always"`: tracking protection is on.
     - `"never"`: tracking protection is off.
@@ -90,12 +90,12 @@ function onSet(result) {
 
 browser.browserAction.onClicked.addListener(() => {
 
-  var getting = browser.privacy.websites.hyperlinkAuditingEnabled.get({});
+  let getting = browser.privacy.websites.hyperlinkAuditingEnabled.get({});
   getting.then((got) => {
     console.log(got.value);
     if ((got.levelOfControl === "controlled_by_this_extension") ||
         (got.levelOfControl === "controllable_by_this_extension")) {
-      var setting = browser.privacy.websites.hyperlinkAuditingEnabled.set({
+      let setting = browser.privacy.websites.hyperlinkAuditingEnabled.set({
         value: true
       });
       setting.then(onSet);

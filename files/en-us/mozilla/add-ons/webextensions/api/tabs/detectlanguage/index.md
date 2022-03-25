@@ -22,9 +22,9 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var detecting = browser.tabs.detectLanguage(
+let detecting = browser.tabs.detectLanguage(
   tabId,                  // optional integer
-  callback                // optional function
+  callback                // optional function
 )
 ```
 
@@ -33,7 +33,7 @@ var detecting = browser.tabs.detectLanguage(
 - `tabId` {{optional_inline}}
   - : `integer`. Defaults to the active tab of the current window.
 - `callback` {{optional_inline}}
-  - : `function`. Currently, if a `tabId` is specified, this method uses this callback to return the results instead of returning a promise. The callback receives as its only input parameter a string containing the detected language code such as `en` or `fr`.
+  - : `function`. Currently, if a `tabId` is specified, this method uses this callback to return the results instead of returning a promise. The callback receives as its only input parameter a string containing the detected language code such as `en` or `fr`.
 
 ### Return value
 
@@ -53,7 +53,7 @@ function onError(error) {
 }
 
 browser.browserAction.onClicked.addListener(function() {
-  var detecting = browser.tabs.detectLanguage();
+  let detecting = browser.tabs.detectLanguage();
   detecting.then(onLanguageDetected, onError);
 });
 ```
@@ -71,14 +71,14 @@ function onError(error) {
 
 function detectLanguages(tabs) {
   for (tab of tabs) {
-    var onFulfilled = onLanguageDetected.bind(null, tab.url);
-    var detecting = browser.tabs.detectLanguage(tab.id);
+    let onFulfilled = onLanguageDetected.bind(null, tab.url);
+    let detecting = browser.tabs.detectLanguage(tab.id);
     detecting.then(onFulfilled, onError);
   }
 }
 
 browser.browserAction.onClicked.addListener(function() {
-  var querying = browser.tabs.query({});
+  let querying = browser.tabs.query({});
   querying.then(detectLanguages, onError);
 });
 ```

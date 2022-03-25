@@ -53,9 +53,9 @@ By coding defensively, we mean trying to build in intelligent fallbacks so that 
 
 The aim is to build up a chart of browsers/devices you can refer to as you test. You can make this as simple or as complex as you like — for example a common approach is to have multiple grades of support level, something like:
 
-1.  A grade: Common/modern browsers — Known to be capable. Test thoroughly and provide full support.
-2.  B grade: Older/less capable browsers — known not to be capable. Test, and provide a more basic experience that gives full access to core information and services.
-3.  C grade: Rare/unknown browsers — don't test, but assume they are capable. Serve the full site, which should work, at least with the fallbacks provided by our defensive coding.
+1. A grade: Common/modern browsers — Known to be capable. Test thoroughly and provide full support.
+2. B grade: Older/less capable browsers — known not to be capable. Test, and provide a more basic experience that gives full access to core information and services.
+3. C grade: Rare/unknown browsers — don't test, but assume they are capable. Serve the full site, which should work, at least with the fallbacks provided by our defensive coding.
 
 Throughout the following sections, we'll build up a support chart in this format.
 
@@ -67,7 +67,7 @@ You could call these "assumptions", or "gut feelings". This is not an accurate, 
 
 For example, if you live in Western Europe or North America, you will know that a lot of people use Windows and Mac desktops/laptops, where the main browsers are Chrome, Firefox, Safari, IE, and Edge. You probably want to just test the latest versions of the first three, as these browsers receive regular updates. For Edge and IE, you probably want to test the last couple of versions; these should all go in the A grade tier.
 
-> **Note:** You can only have one version of IE or Edge installed on a machine at once, so you will probably have to use virtual machine, or other strategy to do the testing you need. See {{anch("Virtual machines")}} later on.
+> **Note:** You can only have one version of IE or Edge installed on a machine at once, so you will probably have to use virtual machine, or other strategy to do the testing you need. See [Virtual machines](#virtual_machines) later on.
 
 Lots of people use iOS and Android, so you probably also want to test the latest versions of iOS Safari, the last couple of versions of the old Android stock browser, and Chrome and Firefox for iOS and Android. You should ideally test these on both a phone and a tablet, to make sure that responsive designs are working OK.
 
@@ -75,9 +75,9 @@ You might also know that a number of people still use IE 9. This is old and less
 
 This gives us the following support chart so far:
 
-1.  A grade: Chrome and Firefox for Windows/Mac, Safari for Mac, Edge and IE for Windows (last two versions of each), iOS Safari for iPhone/iPad, Android stock browser (last two versions) on phone/tablet, Chrome and Firefox for Android (last two versions) on phone tablet
-2.  B grade: IE 9 for Windows
-3.  C grade: n/a
+1. A grade: Chrome and Firefox for Windows/Mac, Safari for Mac, Edge and IE for Windows (last two versions of each), iOS Safari for iPhone/iPad, Android stock browser (last two versions) on phone/tablet, Chrome and Firefox for Android (last two versions) on phone tablet
+2. B grade: IE 9 for Windows
+3. C grade: n/a
 
 If you live somewhere else, or are working on a site that will serve somewhere else (e.g. certain countries, or locales), then you will probably have different common browsers to test.
 
@@ -106,12 +106,12 @@ You may also consider using open source and privacy focussed analytics platforms
 
 #### Setting up Google analytics
 
-1.  First of all, you'll need a Google account. Use this account to sign into [Google Analytics](https://www.google.com/analytics/).
-2.  Choose the [Google Analytics](https://analytics.google.com/analytics/web/) (web) option, and click the _Sign Up_ button.
-3.  Enter your web site/app details into the signup page. This is fairly intuitive to set up; the most important field to get right is the Website URL. This needs to be your site/app's root URL.
-4.  Once you've finished filling in everything, press the _Get Tracking ID_ button, then accept the terms of service that appear.
-5.  The next page provides you with some code snippets and other instructions. For a basic website, what you need to do is copy the _Website tracking_ code block and paste it into all the different pages you want to track using Google Analytics on your site. You could place the snippets below your closing `</body>` tag, or somewhere else appropriate that keeps it from getting muddled up with your application code.
-6.  Upload the changes to the development server, or wherever else you need your code.
+1. First of all, you'll need a Google account. Use this account to sign into [Google Analytics](https://www.google.com/analytics/).
+2. Choose the [Google Analytics](https://analytics.google.com/analytics/web/) (web) option, and click the _Sign Up_ button.
+3. Enter your web site/app details into the signup page. This is fairly intuitive to set up; the most important field to get right is the Website URL. This needs to be your site/app's root URL.
+4. Once you've finished filling in everything, press the _Get Tracking ID_ button, then accept the terms of service that appear.
+5. The next page provides you with some code snippets and other instructions. For a basic website, what you need to do is copy the _Website tracking_ code block and paste it into all the different pages you want to track using Google Analytics on your site. You could place the snippets below your closing `</body>` tag, or somewhere else appropriate that keeps it from getting muddled up with your application code.
+6. Upload the changes to the development server, or wherever else you need your code.
 
 That's it! Your site should now be ready to start reporting analytics data.
 
@@ -140,15 +140,15 @@ Plus you might have other considerations. If you are creating some kind of compa
 
 So, our final support chart will end up looking like so:
 
-1.  A grade: Chrome and Firefox for Windows/Mac, Safari for Mac, Edge and IE for Windows (last two versions of each), iOS Safari for iPhone/iPad, Android stock browser (last two versions) on phone/tablet, Chrome and Firefox for Android (last two versions) on phone tablet. Accessibility passing common tests.
-2.  B grade: IE 8 and 9 for Windows, Opera Mini.
-3.  C grade: Opera, other niche modern browsers.
+1. A grade: Chrome and Firefox for Windows/Mac, Safari for Mac, Edge and IE for Windows (last two versions of each), iOS Safari for iPhone/iPad, Android stock browser (last two versions) on phone/tablet, Chrome and Firefox for Android (last two versions) on phone tablet. Accessibility passing common tests.
+2. B grade: IE 8 and 9 for Windows, Opera Mini.
+3. C grade: Opera, other niche modern browsers.
 
 ## What are you going to test?
 
 When you've got a new addition to your codebase that needs testing, before you start testing you should write out a list of testing requirements that need to pass to be accepted. These requirements can be visual or functional — both combine to make a usable web site feature.
 
-Consider the following example (see the [source code](https://github.com/mdn/learning-area/blob/master/tools-testing/cross-browser-testing/strategies/hidden-info-panel.html), and also the [example running live](https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/strategies/hidden-info-panel.html)):
+Consider the following example (see the [source code](https://github.com/mdn/learning-area/blob/main/tools-testing/cross-browser-testing/strategies/hidden-info-panel.html), and also the [example running live](https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/strategies/hidden-info-panel.html)):
 
 ![](sliding-box-demo.png)
 
@@ -173,7 +173,7 @@ You might also notice that the button isn't usable using only the keyboard — t
 These test criteria are useful, because:
 
 - They give you a set of steps to follow when you are performing tests.
-- They can be easily turned into sets of instructions for user groups to follow when carrying out tests (e.g. "try to active the button using your mouse, and then the keyboard...") — see {{anch("User testing")}}, below.
+- They can be easily turned into sets of instructions for user groups to follow when carrying out tests (e.g. "try to active the button using your mouse, and then the keyboard...") — see [User testing](#user_testing), below.
 - They can also provide a basis for writing automated tests. It is easier to write such tests if you know exactly what you want to test, and what the success conditions are (see [Selenium](/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment#selenium), later in the series).
 
 ## Putting together a testing lab
@@ -219,7 +219,7 @@ You can often find simulators for other mobile device environments too, for exam
 
 - [Blackberry](https://developer.blackberry.com/develop/simulator/) (emulator available for Windows, Mac OSX and Linux).
 - You can emulate [Opera Mini](https://dev.opera.com/articles/installing-opera-mini-on-your-computer/) on its own if you want to test it.
-- There are emulators available for Windows Mobile OSes: see [Windows Phone Emulator for Windows Phone 8](<https://msdn.microsoft.com/en-us/library/windows/apps/ff402563(v=vs.105).aspx>) and [Test with the Microsoft Emulator for Windows 10 Mobile](https://msdn.microsoft.com/en-us/windows/uwp/debug-test-perf/test-with-the-emulator) (these only run on Windows).
+- There are emulators available for Windows Mobile OSes: see [Windows Phone Emulator for Windows Phone 8](<https://msdn.microsoft.com/library/windows/apps/ff402563(v=vs.105).aspx>) and [Test with the Microsoft Emulator for Windows 10 Mobile](https://msdn.microsoft.com/windows/uwp/debug-test-perf/test-with-the-emulator) (these only run on Windows).
 
 > **Note:** Many emulators actually require the use of a virtual machine (see below); when this is the case, instructions are often provided, and/or use of the virtual machine is incorporated into the installer of the emulator.
 
@@ -231,17 +231,17 @@ Virtual machines are applications that run on your desktop computer and allow yo
 
 To use a Virtual Box, you need to:
 
-1.  Get hold of an installer disk or image (e.g. ISO file) for the operating system you want to emulate. Virtual Box is unable to provide these; most, like Windows OSes, are commercial products that can't be freely distributed.
-2.  [Download the appropriate installer](https://www.virtualbox.org/wiki/Downloads) for your operating system and install it.
-3.  Open the app; you'll be presented with a view like the following: ![](virtualbox.png)
-4.  To create a new virtual machine, press the _New_ button in the top left hand corner.
-5.  Follow the instructions and fill in the following dialog boxes as appropriate. You'll:
+1. Get hold of an installer disk or image (e.g. ISO file) for the operating system you want to emulate. Virtual Box is unable to provide these; most, like Windows OSes, are commercial products that can't be freely distributed.
+2. [Download the appropriate installer](https://www.virtualbox.org/wiki/Downloads) for your operating system and install it.
+3. Open the app; you'll be presented with a view like the following: ![](virtualbox.png)
+4. To create a new virtual machine, press the _New_ button in the top left hand corner.
+5. Follow the instructions and fill in the following dialog boxes as appropriate. You'll:
 
-    1.  Provide a name for the new virtual machine
-    2.  Choose which operating system and version you are installing on it
-    3.  Set how much RAM should be allocated (we'd recommend something like 2048MB, or 2GB)
-    4.  Create a virtual hard disk (choose the default options across the three dialog boxes containing _Create a virtual hard disk now_, _VDI (virtual disk image)_, and _Dynamically allocated_).
-    5.  Choose the file location and size for the virtual hard disk (choose a sensible name and location to keep it, and for the size specify around 50GB, or as much as you are comfortable with specifying).
+    1. Provide a name for the new virtual machine
+    2. Choose which operating system and version you are installing on it
+    3. Set how much RAM should be allocated (we'd recommend something like 2048MB, or 2GB)
+    4. Create a virtual hard disk (choose the default options across the three dialog boxes containing _Create a virtual hard disk now_, _VDI (virtual disk image)_, and _Dynamically allocated_).
+    5. Choose the file location and size for the virtual hard disk (choose a sensible name and location to keep it, and for the size specify around 50GB, or as much as you are comfortable with specifying).
 
 Now the new virtual box should appear in the left hand menu of the main Virtual Box UI window. At this point, you can double-click to open it — it will start to boot up the virtual machine, but it won't yet have the operating system (OS) installed. At this point you need to point the dialog box at the installer image/disk, and it will run through the steps to install the OS just like on a physical machine.
 
@@ -282,7 +282,7 @@ We will look at how to use such tools later on in the module.
 
 Before we move on, we'll finish this article off by talking a bit about user testing — this can be a good option if you have a willing user group to test your new functionality on. Bear in mind that this can be as lo-fi or as sophisticated as you like — your user group could be a group of friends, a group of colleagues, or a group of unpaid or paid volunteers, depending on whether you have any money to spend on testing.
 
-Generally you'll get your users to look at the page or view containing the new functionality on some kind of a development server, so you are not putting the final site or change live until it is finished. You should get them to follow some steps and report the results they get. It is useful to provide a set of steps (sometimes called a script) so that you get more reliable results pertaining to what you were trying to test. We mentioned this in the {{anch("What are you going to test")}} section above — it is easy to turn the test criteria detailed there into steps to follow. For example, the following would work for a sighted user:
+Generally you'll get your users to look at the page or view containing the new functionality on some kind of a development server, so you are not putting the final site or change live until it is finished. You should get them to follow some steps and report the results they get. It is useful to provide a set of steps (sometimes called a script) so that you get more reliable results pertaining to what you were trying to test. We mentioned this in the [What are you going to test](#what_are_you_going_to_test) section above — it is easy to turn the test criteria detailed there into steps to follow. For example, the following would work for a sighted user:
 
 - Click the question mark button using the mouse on your desktop computer a few times. Refresh the browser window.
 - Select and activate the question mark button using the keyboard on your desktop computer a few times.

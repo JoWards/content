@@ -5,6 +5,9 @@ tags:
   - CSS
   - Guide
   - Reference
+spec-urls:
+  - https://drafts.csswg.org/css-conditional-3/
+  - https://compat.spec.whatwg.org/#css-at-rules
 ---
 {{CSSRef}}
 
@@ -48,7 +51,7 @@ A subset of nested statements, which can be used as a statement of a style sheet
 - {{cssxref("@counter-style")}} — Defines specific counter styles that are not part of the predefined set of styles. _(at the Candidate Recommendation stage, but only implemented in Gecko as of writing)_
 - {{cssxref("@font-feature-values")}} (plus `@swash`, `@ornaments`, `@annotation`, `@stylistic`, `@styleset` and `@character-variant`) — Define common names in {{cssxref("font-variant-alternates")}} for feature activated differently in OpenType. _(at the Candidate Recommendation stage, but only implemented in Gecko as of writing)_
 - {{cssxref("@property")}} {{experimental_inline}} — Describes the aspect of custom properties and variables. _(currently at the Working Draft stage)_
-- {{cssxref("@color-profile")}} {{experimental_inline}} — Allows a color profile to be defined for use by the {{cssxref("color_value/color()", "color()")}} function.
+- {{cssxref("@color-profile")}} {{experimental_inline}} — Allows a color profile to be defined for use by the {{cssxref("color_value/color", "color()")}} function.
 
 ## Conditional group rules
 
@@ -81,10 +84,7 @@ Since each conditional group may also contain nested statements, there may be an
 
 ## Specifications
 
-| Specification                                                            | Status                                   | Comment                            |
-| ------------------------------------------------------------------------ | ---------------------------------------- | ---------------------------------- |
-| {{SpecName('CSS3 Conditional')}}                             | {{Spec2('CSS3 Conditional')}} | Initial definition                 |
-| {{SpecName('Compat', '#css-at-rules', 'CSS At-rules')}} | {{Spec2('Compat')}}                 | Standardizes `@-webkit-keyframes`. |
+{{Specifications}}
 
 ## See also
 

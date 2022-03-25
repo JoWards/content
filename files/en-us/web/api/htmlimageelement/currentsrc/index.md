@@ -18,13 +18,7 @@ The read-only {{domxref("HTMLImageElement")}} property
 **`currentSrc`** indicates the URL of the image which is
 currently presented in the {{HTMLElement("img")}} element it represents.
 
-## Syntax
-
-```js
-let currentSource = htmlImageElement.currentSrc;
-```
-
-### Value
+## Value
 
 A {{domxref("USVString")}} indicating the full URL of the image currently visible in
 the {{HTMLElement("img")}} element represented by the `HTMLImageElement`.
@@ -44,10 +38,10 @@ document.
 ### HTML
 
 ```html
- <img src="/files/16797/clock-demo-400px.png"
-      alt="Clock"
-      srcset="/files/16864/clock-demo-200px.png 200w, /files/16797/clock-demo-400px.png 400w"
-      sizes="(max-width: 400px) 50%, 90%">
+ <img src="/files/16797/clock-demo-400px.png"
+      alt="Clock"
+      srcset="/files/16864/clock-demo-200px.png 200w, /files/16797/clock-demo-400px.png 400w"
+      sizes="(max-width: 400px) 50%, 90%">
 ```
 
 ### JavaScript

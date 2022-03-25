@@ -26,7 +26,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var evaluating = browser.devtools.panels.setExpression(
+let evaluating = browser.devtools.panels.setExpression(
   expression,       // string
   rootTitle         // string
 )
@@ -55,7 +55,7 @@ This code creates a sidebar pane that displays the [`tagName`](/en-US/docs/Web/A
 function onCreated(sidebarPane) {
 
   browser.devtools.panels.elements.onSelectionChanged.addListener(() => {
-    const exp = "$0 && $0.tagName";
+    const exp = "$0 && $0.tagName";
     const title = "Selected Element tagName";
     sidebarPane.setExpression(exp, title);
   });

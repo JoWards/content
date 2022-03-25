@@ -24,7 +24,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var gettingAll = browser.management.getAll()
+let gettingAll = browser.management.getAll()
 ```
 
 ### Parameters
@@ -45,14 +45,14 @@ Log the name of all installed add-ons:
 
 ```js
 function gotAll(infoArray) {
-  for (info of infoArray) {
-    if (info.type == "extension") {
-      console.log(info.name);
-    }
-  }
+  for (info of infoArray) {
+    if (info.type == "extension") {
+      console.log(info.name);
+    }
+  }
 }
 
-var gettingAll = browser.management.getAll();
+let gettingAll = browser.management.getAll();
 gettingAll.then(gotAll);
 ```
 

@@ -22,7 +22,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var querying = browser.idle.queryState(
+let querying = browser.idle.queryState(
   detectionIntervalInSeconds // integer
 )
 ```
@@ -34,7 +34,7 @@ var querying = browser.idle.queryState(
 
 ### Return value
 
-A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with an {{WebExtAPIRef('idle.IdleState')}} string, indicating the current state.
+A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that will be fulfilled with an {{WebExtAPIRef('idle.IdleState')}} string, indicating the current state.
 
 ## Browser compatibility
 
@@ -42,7 +42,7 @@ A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that 
 
 ## Examples
 
-In this simple snippet, we call `queryState()` and then check if the returned `newState` is `idle` or `active`, logging a message as appropriate. Because we have specified  a `detectionIntervalInSeconds` of 15, an `idle` state will only be reported if there has been no user activity for at least 15 seconds
+In this simple snippet, we call `queryState()` and then check if the returned `newState` is `idle` or `active`, logging a message as appropriate. Because we have specified  a `detectionIntervalInSeconds` of 15, an `idle` state will only be reported if there has been no user activity for at least 15 seconds
 
 ```js
 function onGot(newState) {
@@ -53,7 +53,7 @@ function onGot(newState) {
   }
 }
 
-var querying = browser.idle.queryState(15);
+let querying = browser.idle.queryState(15);
 querying.then(onGot);
 ```
 

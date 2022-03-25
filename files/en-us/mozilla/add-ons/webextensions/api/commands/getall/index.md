@@ -24,7 +24,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var getCommands = browser.commands.getAll();
+let getCommands = browser.commands.getAll();
 ```
 
 ### Parameters
@@ -43,12 +43,12 @@ A [`Promise`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that 
 
 ```js
 function logCommands(commands) {
-  commands.forEach(function(command) {
-    console.log(command);
-  });
+  commands.forEach(function(command) {
+    console.log(command);
+  });
 }
 
-var getCommands = browser.commands.getAll();
+let getCommands = browser.commands.getAll();
 getCommands.then(logCommands);
 ```
 

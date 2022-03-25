@@ -42,7 +42,7 @@ The {{domxref("Navigator.permissions")}} property has been added to the browser 
 
 ### Querying permission state
 
-In our example, the Permissions functionality is handled by one function — `handlePermission()`. This starts off by querying the permission status using {{domxref("Permissions.query()")}}. Depending on the value of the {{domxref("PermissionStatus.state", "state")}} property of the  {{domxref("PermissionStatus")}} object returned when the promise resolves, it reacts differently:
+In our example, the Permissions functionality is handled by one function — `handlePermission()`. This starts off by querying the permission status using {{domxref("Permissions.query()")}}. Depending on the value of the {{domxref("PermissionStatus.state", "state")}} property of the  {{domxref("PermissionStatus")}} object returned when the promise resolves, it reacts differently:
 
 - `"granted"`
   - : The "Enable Geolocation" button is hidden, as it isn't needed if Geolocation is already active.
@@ -65,9 +65,9 @@ function handlePermission() {
       report(result.state);
       geoBtn.style.display = 'inline';
     }
-    result.onchange = function() {
+    result.addEventListener('change', function() {
       report(result.state);
-    }
+    });
   });
 }
 
@@ -84,7 +84,7 @@ The {{domxref("Permissions.query()")}} method takes a `PermissionDescriptor` dic
 
 ### Revoking permissions
 
-Starting in Firefox 47, you can now revoke existing permissions, using the  {{domxref("Permissions.revoke()")}} method. This works in exactly the same way as the {{domxref("Permissions.query()")}} method, except that it causes an existing permission to be reverted back to its default state when the promise successfully resolves (which is usually `prompt`). See the following code in our demo:
+Starting in Firefox 47, you can now revoke existing permissions, using the  {{domxref("Permissions.revoke()")}} method. This works in exactly the same way as the {{domxref("Permissions.query()")}} method, except that it causes an existing permission to be reverted back to its default state when the promise successfully resolves (which is usually `prompt`). See the following code in our demo:
 
 ```js
 var revokeBtn = document.querySelector('.revoke');
@@ -108,7 +108,7 @@ function revokePermission() {
 
 ### Responding to permission state changes
 
-You'll notice that there is an `onchange` event handler in the code above, attached to the {{domxref("PermissionStatus")}} object — this allows us to respond to any changes in the permission status for the API we are interested in. At the moment we are just reporting the change in state.
+You'll notice that we're listening to the {{domxref("PermissionStatus.change_event", "change")}} event in the code above, attached to the {{domxref("PermissionStatus")}} object — this allows us to respond to any changes in the permission status for the API we are interested in. At the moment we are just reporting the change in state.
 
 ## Conclusion and future work
 

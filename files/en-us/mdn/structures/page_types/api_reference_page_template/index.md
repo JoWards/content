@@ -66,7 +66,7 @@ The summary paragraph — start by naming the interface, saying what API it is p
 
 ## Constructor
 
-- {{DOMxRef("NameOfTheInterface.NameOfTheInterface")}}
+- {{DOMxRef("NameOfTheInterface.NameOfTheInterface", "NameOfTheInterface()")}}
   - : Creates a new instance of the {{DOMxRef("NameOfTheInterface")}} object.
 
 ## Properties
@@ -92,11 +92,11 @@ _Also inherits methods from its parent interface, {{DOMxRef("NameOfParentInterfa
 Listen to these events using [`addEventListener()`](/en-US/docs/Web/API/EventTarget/addEventListener) or by assigning an event listener to the `oneventname` property of this interface.
 
 - [`eventname1`](#)
-  - : Fired when ... include description of when event fires
-    Also available via the [`oneventname1`](#) property.
+  - : Fired when ... include description of when event fires.
+    Also available via the `oneventname1` property.
 - [`eventname2`](#)
-  - : Fired when ... include description of when event fires
-    Also available via the [`oneventname2`](#) property.
+  - : Fired when ... include description of when event fires.
+    Also available via the `oneventname2` property.
 - etc.
   - : Fired when ...
 

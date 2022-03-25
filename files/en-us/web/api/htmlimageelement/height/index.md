@@ -22,14 +22,7 @@ drawn, in {{Glossary("CSS pixels")}} if the image is being drawn or rendered to 
 visual medium such as the screen or a printer; otherwise, it's the natural, pixel
 density corrected height of the image.
 
-## Syntax
-
-```js
-htmlImageElement.height = newHeight;
-let height = htmlImageElement.height;
-```
-
-### Value
+## Value
 
 An integer value indicating the height of the image. The terms in which the height is
 defined depends on whether the image is being rendered to a visual medium or not.
@@ -55,10 +48,10 @@ otherwise, it's drawn at 300px.
 ```html
 <p>Image height: <span class="size">?</span>px (resize to update)</p>
 <img src="/files/17373/clock-demo-200px.png"
-      alt="Clock"
-      srcset="/files/17373/clock-demo-200px.png 200w,
-          /files/17374/clock-demo-400px.png 400w"
-      sizes="(max-width: 400px) 200px, 300px">
+      alt="Clock"
+      srcset="/files/17373/clock-demo-200px.png 200w,
+          /files/17374/clock-demo-400px.png 400w"
+      sizes="(max-width: 400px) 200px, 300px">
 ```
 
 ### JavaScript

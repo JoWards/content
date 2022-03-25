@@ -47,21 +47,21 @@ While adding `disabled` to an HTML form control causes `:disabled` user-agent st
 > **Note:** If you are using CSS's [`pointer-events: none;`](/en-US/docs/Web/CSS/pointer-events) to make an element non-clickable, make sure you disable interactivity with JavaScript as well. `pointer-events: none;` prevents mouse clicks, but does not prevent the element from being activated via the keyboard.
 
 ```js
+function onClick(event) {
+  event.preventDefault();
+}
+
 function toggleDisabled(element, status, update) {
   if(status) {
     //element.input.disabled = false;
     element.setAttribute('aria-disabled', 'false');
     update.textContent = 'The element is now enabled.';
-    element.removeEventListener('click', function (event) {
-      event.preventDefault();
-    }
+    element.removeEventListener('click', onClick);
   } else {
     //element.input.disabled = true;
     element.setAttribute('aria-disabled', 'true');
     update.textContent = 'The element is now disabled.';
-    element.addEventListener('click', function (event) {
-      event.preventDefault();
-    }
+    element.addEventListener('click', onClick);
   }
 }
 ```
@@ -87,7 +87,7 @@ If you used just CSS to style the disabled state using an attribute selector, th
 - {{domxref("Element.ariaDisabled")}}
   - : The  [`ariaDisabled`](/en-US/docs/Web/API/Element/ariaDisabled) property, part of the {{domxref("Element")}} interface, reflects the value of the `aria-disabled` attribute, which indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
 - {{domxref("ElementInternals.ariaDisabled")}}
-  - : The [`ariaDisabled`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaDisabled) property of the {{domxref("ElementInternals")}} interface reflects the value of the `aria-disabled` attribute.
+  - : The [`ariaDisabled`](/en-US/docs/Web/API/ElementInternals/ariaDisabled) property of the {{domxref("ElementInternals")}} interface reflects the value of the `aria-disabled` attribute.
 
 ## Associated roles
 

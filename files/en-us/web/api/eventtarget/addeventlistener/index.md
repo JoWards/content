@@ -24,11 +24,9 @@ but the target may be any object that supports events (such as {{domxref("XMLHtt
 
 The method `addEventListener()` works by adding a function, or an object that implements
 {{domxref("EventListener")}}, to the list of event listeners for the specified event type
-on the {{domxref("EventTarget")}} on which it's called. If the function or object, is already in the list of event listeners for this target, they are not added a second time.
+on the {{domxref("EventTarget")}} on which it's called. If the function or object is already in the list of event listeners for this target, the function or object is not added a second time.
 
-They do not need to be removed manually with {{domxref("EventTarget.removeEventListener", "removeEventListener()")}}.
-
-> **Note:** Two identical anonymous functions are considered as different for `addEventListener` and the second one will _also_ be added to the list of event listener for that target.
+> **Note:** If a particular anonymous function is in the list of event listeners registered for a certain target, and then later in the code, an identical anonymous function is given in an `addEventListener` call, the second function will _also_ be added to the list of event listeners for that target.
 >
 > Indeed, anonymous functions are not identical even if defined using
 > the _same_ unchanging source-code called repeatedly, **even if in a loop**.
@@ -36,8 +34,8 @@ They do not need to be removed manually with {{domxref("EventTarget.removeEventL
 > Repeatedly defining the same unnamed function in such cases can be
 > problematic. (See [Memory issues](#memory_issues), below.)
 
-If an event listener is added to an {{domxref("EventTarget")}} from inside another listener,
-that is during the processing of the event,
+If an event listener is added to an {{domxref("EventTarget")}} from inside another listener —
+that is, during the processing of the event —
 that event will not trigger the new listener.
 However, the new listener may be triggered during a later stage of event flow,
 such as during the bubbling phase.
@@ -59,7 +57,7 @@ addEventListener(type, listener, useCapture);
     {{domxref("Event")}} interface) when an event of the specified type occurs. This must
     be an object implementing the {{domxref("EventListener")}} interface, or a JavaScript
     [function](/en-US/docs/Web/JavaScript/Guide/Functions). See
-    {{anch("The event listener callback")}} for details on the callback itself.
+    [The event listener callback](#the_event_listener_callback) for details on the callback itself.
 - `options` {{optional_inline}}
 
   - : An object that specifies characteristics about the event listener. The available
@@ -68,20 +66,19 @@ addEventListener(type, listener, useCapture);
     - `capture`
       - : A boolean value indicating that events of this type will be dispatched
         to the registered `listener` before being dispatched to any
-        `EventTarget` beneath it in the DOM tree.
+        `EventTarget` beneath it in the DOM tree. If not specified, defaults to `false`.
     - `once`
       - : A boolean value indicating that the `listener`
         should be invoked at most once after being added. If `true`, the
-        `listener` would be automatically removed when invoked.
+        `listener` would be automatically removed when invoked. If not specified, defaults to `false`.
     - `passive`
       - : A boolean value that, if `true`, indicates that the function
         specified by `listener` will never call
         {{domxref("Event.preventDefault", "preventDefault()")}}. If a passive listener
         does call `preventDefault()`, the user agent will do nothing other than
-        generate a console warning.
-        See [Improving scrolling performance with passive listeners](#improving_scrolling_performance_with_passive_listeners) to learn more.
+        generate a console warning. If not specified, defaults to `false` – except that in browsers other than Safari and Internet Explorer, defaults to `true` for the {{domxref("Element/wheel_event", "wheel")}}, {{domxref("Element/mousewheel_event", "mousewheel")}}, {{domxref("Element/touchstart_event", "touchstart")}} and {{domxref("Element/touchmove_event", "touchmove")}} events. See [Improving scrolling performance with passive listeners](#improving_scrolling_performance_with_passive_listeners) to learn more.
     - `signal`
-      - : An {{domxref("AbortSignal")}}. The listener will be removed when the given `AbortSignal` object's {{domxref("AbortController/abort()", "abort()")}} method is called.
+      - : An {{domxref("AbortSignal")}}. The listener will be removed when the given `AbortSignal` object's {{domxref("AbortController/abort()", "abort()")}} method is called. If not specified, no `AbortSignal` is associated with the listener.
 
 - `useCapture` {{optional_inline}}
 
@@ -179,7 +176,7 @@ means that if the browser checks the value of the `passive` property on the
 set to `true`; otherwise, it will remain `false`. We then call
 `addEventListener()` to set up a fake event handler, specifying those
 options, so that the options will be checked if the browser recognizes an object as the
-third parameter. Then, we call `removeEventListener()` to clean up after
+third parameter. Then, we call [`removeEventListener()`](/en-US/docs/Web/API/EventTarget/removeEventListener) to clean up after
 ourselves. (Note that `handleEvent()` is ignored on event listeners that
 aren't called.)
 
@@ -477,8 +474,7 @@ Click the outer, middle, inner containers respectively to see how the options wo
 
 Before using a particular value in the `options` object, it's a
 good idea to ensure that the user's browser supports it, since these are an addition
-that not all browsers have supported historically. See {{anch("Safely detecting option
-  support")}} for details.
+that not all browsers have supported historically. See [Safely detecting option support](#safely_detecting_option_support) for details.
 
 ## Other notes
 
@@ -808,24 +804,7 @@ the last one added.
 
 ### Improving scrolling performance with passive listeners
 
-According to the specification, the default value for the `passive` option
-is always `false`. However, this introduces the potential for event listeners
-handling certain touch events (among others) to block the browser's main thread while it
-is attempting to handle scrolling, resulting in possibly enormous reduction in
-performance during scroll handling.
-
-To prevent this problem, some browsers (specifically, Chrome and Firefox) have changed
-the default value of the `passive` option to `true` for the
-{{event("touchstart")}} and {{event("touchmove")}} events on the document-level nodes
-{{domxref("Window")}}, {{domxref("Document")}}, and {{domxref("Document.body")}}. This
-prevents the event listener from [canceling the event](/en-US/docs/Web/API/Event/preventDefault), so it can't block page rendering while
-the user is scrolling.
-
-> **Note:** See the compatibility table below if you need to know which
-> browsers (and/or which versions of those browsers) implement this altered behavior.
-
-You can override this behavior by explicitly setting the value of `passive`
-to `false`, as shown here:
+Setting the `passive` option to `true` — as shown in the following example — enables performance optimizations that can dramatically improve the performance of an application.
 
 ```js
 /* Feature detection */
@@ -849,13 +828,23 @@ window.addEventListener('scroll', function(event) {
 }, passiveIfSupported );
 ```
 
-On older browsers that don't support the `options` parameter to
+The specification for `addEventListener()` defines the default value for the `passive` option as always being `false`. However, that introduces the potential for event listeners handling touch events and wheel events to block the browser's main thread while the browser is attempting to handle scrolling — possibly resulting in an enormous reduction in performance during scroll handling.
+
+To prevent that problem, browsers other than Safari and Internet Explorer have changed the default value of the `passive` option to `true` for the {{domxref("Element/wheel_event", "wheel")}}, {{domxref("Element/mousewheel_event", "mousewheel")}}, {{domxref("Element/touchstart_event", "touchstart")}} and {{domxref("Element/touchmove_event", "touchmove")}} events on the document-level nodes {{domxref("Window")}}, {{domxref("Document")}}, and {{domxref("Document.body")}}. That prevents the event listener from [canceling the event](/en-US/docs/Web/API/Event/preventDefault), so it can't block page rendering while the user is scrolling.
+
+> **Note:** See the compatibility table below if you need to know which
+> browsers (and/or which versions of those browsers) implement this altered behavior.
+
+Because of that, when you want to override that behavior and ensure the `passive` option is `false` in all browsers, you must explicitly set the option to `false` (rather than relying on the default).
+
+You don't need to worry about the value of `passive` for the basic {{domxref("Element/scroll_event", "scroll")}} event.
+Since it can't be canceled, event listeners can't block page rendering anyway.
+
+### Older browsers
+
+In older browsers that don't support the `options` parameter to
 `addEventListener()`, attempting to use it prevents the use of the
 `useCapture` argument without proper use of [feature detection](#safely_detecting_option_support).
-
-You don't need to worry about the value of `passive` for the basic
-{{event("scroll")}} event. Since it can't be canceled, event listeners can't block page
-rendering anyway.
 
 ## Specifications
 

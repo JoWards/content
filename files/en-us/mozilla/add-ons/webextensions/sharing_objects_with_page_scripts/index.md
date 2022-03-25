@@ -40,7 +40,7 @@ So for example, when a content script accesses the page's [window](/en-US/docs/W
 
 ## Accessing page script objects from content scripts
 
-In Firefox, DOM objects in content scripts get an extra property `wrappedJSObject`. This is an "unwrapped" version of the object, which includes any changes made to that object by any page scripts.
+In Firefox, DOM objects in content scripts get an extra property `wrappedJSObject`. This is an "unwrapped" version of the object, which includes any changes made to that object by any page scripts.
 
 Let's take a simple example. Suppose a web page loads a script:
 
@@ -61,7 +61,7 @@ The script adds an expando property to the global `window`:
 ```js
 // main.js
 
-var foo = "I'm defined in a page script!";
+let foo = "I'm defined in a page script!";
 ```
 
 Xray vision means that if a content script tries to access `foo`, it will be undefined:
@@ -174,7 +174,7 @@ Because the object contains functions,
 the cloneInto call must include
 the `cloneFunctions` option.
 */
-var messenger = {
+let messenger = {
   notify: function(message) {
     browser.runtime.sendMessage({
       content: "Object method call: " + message

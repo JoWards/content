@@ -17,8 +17,8 @@ The **`Intl.supportedValuesOf()`** method returns an array containing the suppor
 
 Duplicates are omitted and the array is sorted in ascending alphabetic order (or more precisely, using {{jsxref("Array/sort", "Array.prototype.sort()")}} with an `undefined` compare function)
 
-The method can be used to feature-test whether values are supported in a particular implementation and download a polyfill only if neccesary.
-It can also be used to build UIs that allow users to select their preferred localised values, for example when the UI is created from WebGL or server-side.
+The method can be used to feature-test whether values are supported in a particular implementation and download a polyfill only if necessary.
+It can also be used to build UIs that allow users to select their preferred localized values, for example when the UI is created from WebGL or server-side.
 
 {{EmbedInteractiveExample("pages/js/intl-supportedvaluesof.html")}}
 
@@ -60,7 +60,7 @@ if (typeof Intl.supportedValuesOf !== 'undefined') {
 ### Get all values for key
 
 To get the supported values for calendar you call the method with the key `"calendar"`.
-YOu can then iterate through the returned array as shown below:
+You can then iterate through the returned array as shown below:
 
 ```js
 Intl.supportedValuesOf("calendar").forEach(function(calendar) {
@@ -104,10 +104,6 @@ try {
 }
 ```
 
-## Polyfill
-
-[Intl.supportedValuesOf() polyfill in proposal TC39](https://github.com/tc39/proposal-intl-enumeration/tree/master/polyfill)
-
 ## Specifications
 
 {{Specifications}}
@@ -119,3 +115,4 @@ try {
 ## See also
 
 - {{jsxref("Global_Objects/Intl", "Intl")}}
+- [A polyfill of `Intl.supportedValuesOf` in proposal TC39](https://github.com/tc39/proposal-intl-enumeration/tree/master/polyfill)

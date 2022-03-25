@@ -22,7 +22,7 @@ This is an asynchronous function that returns a [`Promise`](/en-US/docs/Web/Java
 ## Syntax
 
 ```js
-var uninstalling = browser.management.uninstall(
+let uninstalling = browser.management.uninstall(
   id,                  // string
   options              // object
 )
@@ -37,7 +37,7 @@ var uninstalling = browser.management.uninstall(
 
 <!---->
 
-- If `id` is the calling add-on's ID, `showConfirmDialog` defaults to `false`.
+- If `id` is the calling add-on's ID, `showConfirmDialog` defaults to `false`.
 - If `id` is a the ID of a different add-on, the `showConfirmDialog` option is ignored and the confirmation dialog is always shown.
 
 ### Return value
@@ -55,13 +55,13 @@ Uninstall the add-on whose ID is "my-addon-id", asking the user to confirm. In t
 Note that we haven't passed a fulfillment handler because if uninstallation succeeds, the add-on is no longer around to handle it.
 
 ```js
-var id = "my-addon-id";
+let id = "my-addon-id";
 
 function onCanceled(error) {
   console.log(`Uninstall canceled: ${error}`);
 }
 
-var uninstalling = browser.management.uninstall(id);
+let uninstalling = browser.management.uninstall(id);
 uninstalling.then(null, onCanceled);
 ```
 
