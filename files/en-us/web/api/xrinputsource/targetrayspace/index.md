@@ -1,33 +1,12 @@
 ---
-title: XRInputSource.targetRaySpace
+title: "XRInputSource: targetRaySpace property"
+short-title: targetRaySpace
 slug: Web/API/XRInputSource/targetRaySpace
-tags:
-  - API
-  - AR
-  - Controller
-  - Input
-  - Mixed
-  - Property
-  - Ray
-  - Read-only
-  - Reality
-  - Reference
-  - VR
-  - Virtual
-  - WebXR
-  - WebXR API
-  - WebXR Device API
-  - XR
-  - XRInputSource
-  - XRReferenceSpace
-  - XRSpace
-  - augmented
-  - source
-  - space
-  - target
+page-type: web-api-instance-property
 browser-compat: api.XRInputSource.targetRaySpace
 ---
-{{APIRef("WebXR Device API")}}
+
+{{APIRef("WebXR Device API")}}{{SecureContext_Header}}
 
 The read-only {{domxref("XRInputSource")}} property
 **`targetRaySpace`** returns an {{domxref("XRSpace")}}
@@ -73,7 +52,7 @@ pass it into the {{domxref("XRFrame")}} method {{domxref("XRFrame.getPose",
   "getPose()")}} method, then use the returned {{domxref("XRPose")}} object's
 {{domxref("XRPose.transform", "transform")}} to gather the spatial information you need.
 
-## Example
+## Examples
 
 This fragment of code shows part of a function to be called once every frame. It looks for inputs which have a non-`null` {{domxref("XRInputSource.targetRaySpace", "targetRaySpace")}}. Inputs which have a value for this property represent inputs that project a target ray outward from the user.
 
@@ -83,16 +62,16 @@ The code should continue to perform tasks such as drawing controllers or any obj
 
 ```js
 function updateInputSources(session, frame, refSpace) {
-  for (let source of session.getInputSources()) {
-    let targetRayPose = frame.getPose(inputSource.targetRaySpace, refSpace);
+  for (const source of session.getInputSources()) {
+    const targetRayPose = frame.getPose(inputSource.targetRaySpace, refSpace);
 
     if (targetRayPose) {
-      if (source.targetRayMode == "tracked-pointer") {
+      if (source.targetRayMode === "tracked-pointer") {
         myRenderTargetRayAsBeam(targetRayPose);
       }
     }
 
-    /* ... */
+    // …
   }
 }
 ```
@@ -109,5 +88,4 @@ function updateInputSources(session, frame, refSpace) {
 
 - [WebXR Device API](/en-US/docs/Web/API/WebXR_Device_API)
 - [Inputs and input sources](/en-US/docs/Web/API/WebXR_Device_API/Inputs)
-- [Using gamepads in WebXR
-  applications](/en-US/docs/Web/WebXR%20Device%20API/Gamepads)
+- [Using gamepads in WebXR applications](/en-US/docs/Web/WebXR%20Device%20API/Gamepads)

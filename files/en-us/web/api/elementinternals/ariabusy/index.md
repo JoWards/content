@@ -1,17 +1,12 @@
 ---
-title: ElementInternals.ariaBusy
+title: "ElementInternals: ariaBusy property"
+short-title: ariaBusy
 slug: Web/API/ElementInternals/ariaBusy
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaBusy
-  - AriaAttributes
-  - AriaMixin
-  - ElementInternals
+page-type: web-api-instance-property
 browser-compat: api.ElementInternals.ariaBusy
 ---
-{{DefaultAPISidebar("DOM")}}
+
+{{APIRef("Web Components")}}
 
 The **`ariaBusy`** property of the {{domxref("ElementInternals")}} interface reflects the value of the [`aria-busy`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy) attribute, which indicates whether an element is being modified, as assistive technologies may want to wait until the modifications are complete before exposing them to the user.
 
@@ -19,7 +14,7 @@ The **`ariaBusy`** property of the {{domxref("ElementInternals")}} interface ref
 
 ## Value
 
-A {{domxref("DOMString")}} with one of the following values:
+A string with one of the following values:
 
 - `"true"`
   - : The element is being updated.

@@ -1,24 +1,9 @@
 ---
 title: Using HTTP cookies
 slug: Web/HTTP/Cookies
-tags:
-  - Advertising
-  - Browser
-  - Cookies
-  - Cookies Article
-  - Guide
-  - HTTP
-  - History
-  - JavaScript
-  - Privacy
-  - Protocols
-  - Server
-  - Storage
-  - Web Development
-  - data
-  - request
-  - tracking
+page-type: guide
 ---
+
 {{HTTPSidebar}}
 
 An **HTTP cookie** (web cookie, browser cookie) is a small piece of data that a server sends to a user's web browser.
@@ -36,7 +21,7 @@ Cookies are mainly used for three purposes:
 
 Cookies were once used for general client-side storage. While this made sense when they were the only way to store data on the client, modern storage APIs are now recommended. Cookies are sent with every request, so they can worsen performance (especially for mobile data connections). Modern APIs for client storage are the [Web Storage API](/en-US/docs/Web/API/Web_Storage_API) (`localStorage` and `sessionStorage`) and [IndexedDB](/en-US/docs/Web/API/IndexedDB_API).
 
-> **Note:** To see stored cookies (and other storage that a web page can use), you can enable the [Storage Inspector](/en-US/docs/Tools/Storage_Inspector) in Developer Tools and select Cookies from the storage tree.
+> **Note:** To see stored cookies (and other storage that a web page can use), you can enable the [Storage Inspector](https://firefox-source-docs.mozilla.org/devtools-user/storage_inspector/index.html) in Developer Tools and select Cookies from the storage tree.
 
 ## Creating cookies
 
@@ -46,7 +31,7 @@ After receiving an HTTP request, a server can send one or more {{HTTPHeader("Set
 
 The {{HTTPHeader("Set-Cookie")}} HTTP response header sends cookies from the server to the user agent. A simple cookie is set like this:
 
-```html
+```http
 Set-Cookie: <cookie-name>=<cookie-value>
 ```
 
@@ -71,21 +56,21 @@ Cookie: yummy_cookie=choco; tasty_cookie=strawberry
 
 > **Note:** Here's how to use the `Set-Cookie` header in various server-side applications:
 >
-> - [PHP](https://secure.php.net/manual/en/function.setcookie.php)
+> - [PHP](https://www.php.net/manual/en/function.setcookie.php)
 > - [Node.JS](https://nodejs.org/dist/latest-v14.x/docs/api/http.html#http_response_setheader_name_value)
 > - [Python](https://docs.python.org/3/library/http.cookies.html)
 > - [Ruby on Rails](https://api.rubyonrails.org/classes/ActionDispatch/Cookies.html)
 
 ### Define the lifetime of a cookie
 
-The lifetime of a cookie can be defined in two ways:
+Cookies can persist for two different periods, depending on the attributes used with the {{HTTPHeader("Set-Cookie")}} header when they were created:
 
-- _Session_ cookies are deleted when the current session ends. The browser defines when the "current session" ends, and some browsers use _session restoring_ when restarting. This can cause session cookies to last indefinitely.
-- _Permanent_ cookies are deleted at a date specified by the `Expires` attribute, or after a period of time specified by the `Max-Age` attribute.
+- _Permanent_ cookies are deleted at a date specified by the `Expires` attribute or after a period prescribed by the `Max-Age` attribute.
+- _Session_ cookies – cookies without a `Max age` or `Expires` attribute – are deleted when the current session ends. The browser defines when the "current session" ends, and some browsers use _session restoring_ when restarting. This can cause session cookies to last indefinitely.
 
 For example:
 
-```
+```http
 Set-Cookie: id=a3fWa; Expires=Thu, 31 Oct 2021 07:28:00 GMT;
 ```
 
@@ -99,11 +84,11 @@ You can ensure that cookies are sent securely and aren't accessed by unintended 
 
 A cookie with the `Secure` attribute is only sent to the server with an encrypted request over the HTTPS protocol. It's never sent with unsecured HTTP (except on localhost), which means {{Glossary("MitM", "man-in-the-middle")}} attackers can't access it easily. Insecure sites (with `http:` in the URL) can't set cookies with the `Secure` attribute. However, don't assume that `Secure` prevents all access to sensitive information in cookies. For example, someone with access to the client's hard disk (or JavaScript if the `HttpOnly` attribute isn't set) can read and modify the information.
 
-A cookie with the `HttpOnly` attribute is inaccessible to the JavaScript {{domxref("Document.cookie")}} API; it's only sent to the server. For example, cookies that persist in server-side sessions don't need to be available to JavaScript and should have the `HttpOnly` attribute. This precaution helps mitigate cross-site scripting ([XSS](</en-US/docs/Web/Security/Types_of_attacks#cross-site_scripting_(xss)>)) attacks.
+A cookie with the `HttpOnly` attribute is inaccessible to the JavaScript {{domxref("Document.cookie")}} API; it's only sent to the server. For example, cookies that persist in server-side sessions don't need to be available to JavaScript and should have the `HttpOnly` attribute. This precaution helps mitigate cross-site scripting ([XSS](/en-US/docs/Web/Security/Types_of_attacks#cross-site_scripting_xss)) attacks.
 
 Here's an example:
 
-```
+```http
 Set-Cookie: id=a3fWa; Expires=Thu, 21 Oct 2021 07:28:00 GMT; Secure; HttpOnly
 ```
 
@@ -113,9 +98,11 @@ The `Domain` and `Path` attributes define the _scope_ of a cookie: what URLs the
 
 #### Domain attribute
 
-The `Domain` attribute specifies which hosts can receive a cookie. If unspecified, the attribute defaults to the same {{Glossary("host")}} that set the cookie, _excluding subdomains_. If `Domain` _is_ specified, then subdomains are always included. Therefore, specifying `Domain` is less restrictive than omitting it. However, it can be helpful when subdomains need to share information about a user.
+The `Domain` attribute specifies which server can receive a cookie.
 
-For example, if you set `Domain=mozilla.org`, cookies are available on subdomains like `developer.mozilla.org`.
+If specified, then cookies are available on the server and its subdomains. For example, if you set `Domain=mozilla.org`, cookies are available on mozilla.org and its subdomains like `developer.mozilla.org`.
+
+If the server does not specify a `Domain`, the cookies are available on the server _but not on its subdomains_. Therefore, specifying `Domain` is less restrictive than omitting it. However, it can be helpful when subdomains need to share information about a user.
 
 #### Path attribute
 
@@ -135,25 +122,35 @@ But these request paths don't:
 - `/docsets`
 - `/fr/docs`
 
+##### Path default value
+
+If the `Path` attribute is not set, its default value is computed from the [path](/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL#path_to_resource) of the URI that set the cookie, as follows:
+
+- If the path is empty, does not start with `"/"`, or contains no more than one `"/"` character, then the default value for `Path` is `"/"`.
+- Otherwise, the default value for `Path` is the path from the start up to but not including the final `"/"` character.
+
+For example, if the cookie was set from `"https://example.org/a/b/c`, then the default value of `Path`
+would be `"/a/b"`.
+
 #### SameSite attribute
 
-The [`SameSite`](/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite) attribute lets servers specify whether/when cookies are sent with cross-site requests (where {{Glossary("Site")}} is defined by the registrable domain and the _scheme_: http or https).
+The [`SameSite`](/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value) attribute lets servers specify whether/when cookies are sent with cross-site requests (where {{Glossary("Site")}} is defined by the registrable domain and the _scheme_: http or https).
 This provides some protection against cross-site request forgery attacks ({{Glossary("CSRF")}}).
 It takes three possible values: `Strict`, `Lax`, and `None`.
 
-With `Strict`, the cookie is only sent to the site where it originated.
-`Lax` is similar, except that cookies are sent when the user _navigates_ to the cookie's origin site.
-For example, by following a link from an external site. `None` specifies that cookies are sent on both originating and cross-site requests, but *only in secure contexts* (i.e., if `SameSite=None` then the `Secure` attribute must also be set).
+With `Strict`, the browser only sends the cookie with requests from the cookie's origin site.
+`Lax` is similar, except the browser also sends the cookie when the user _navigates_ to the cookie's origin site (even if the user is coming from a different site).
+For example, by following a link from an external site. `None` specifies that cookies are sent on both originating and cross-site requests, but _only in secure contexts_ (i.e., if `SameSite=None` then the `Secure` attribute must also be set).
 If no `SameSite` attribute is set, the cookie is treated as `Lax`.
 
 Here's an example:
 
-```
+```http
 Set-Cookie: mykey=myvalue; SameSite=Strict
 ```
 
 > **Note:** The standard related to `SameSite` recently changed (MDN documents the new behavior above).
-> See the cookies [Browser compatibility](/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite#browser_compatibility) table for information about how the attribute is handled in specific browser versions:
+> See the cookies [Browser compatibility](/en-US/docs/Web/HTTP/Headers/Set-Cookie#browser_compatibility) table for information about how the attribute is handled in specific browser versions:
 >
 > - `SameSite=Lax` is the new default if `SameSite` isn't specified.
 >   Previously, cookies were sent for all requests by default.
@@ -211,16 +208,23 @@ A cookie is associated with a particular domain and scheme (such as `http` or `h
 If the cookie domain and scheme match the current page, the cookie is considered to be from the same site as the page, and is referred to as a _first-party cookie_.
 
 If the domain and scheme are different, the cookie is not considered to be from the same site, and is referred to as a _third-party cookie_.
-While the server hosting a web page sets first-party cookies, the page may contain images or other components stored on servers in other domains (for example, ad banners) that may set third-party cookies.
-These are mainly used for advertising and tracking across the web.
-For example, the [types of cookies used by Google](https://policies.google.com/technologies/types).
+While the server hosting a web page sets first-party cookies, the page may contain components stored on servers in other domains, such as images or other documents embedded in {{htmlelement("iframe")}}s. These components may set third-party cookies.
+
+> **Note:** Third-party cookies are sometimes referred to as _cross-site cookies_. This is arguably a more accurate name, as _third-party cookies_ imply ownership by a third-party company or organization. However, the behavior and potential issues are the same whether or not you own all the involved sites.
+
+Typical use cases for third-party cookies include sharing user profile information or collecting analytics across different related domains. They are also often used for advertising and tracking users across the web.
+
+> **Note:** Companies should disclose the types of cookies they use on their sites for transparency purposes and to comply with [regulations](#cookie-related_regulations). For example, see [Google's notice on the types of cookies it uses](https://policies.google.com/technologies/types) and Mozilla's [Websites, Communications & Cookies Privacy Notice](https://www.mozilla.org/en-US/privacy/websites/#cookies).
 
 A third-party server can create a profile of a user's browsing history and habits based on cookies sent to it by the same browser when accessing multiple sites.
 Firefox, by default, blocks third-party cookies that are known to contain trackers.
 Third-party cookies (or just tracking cookies) may also be blocked by other browser settings or extensions.
 Cookie blocking can cause some third-party components (such as social media widgets) not to function as intended.
 
-> **Note:** Servers can (and should) set the cookie [SameSite attribute](/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite) to specify whether or not cookies may be sent to third party sites.
+There are some useful features available for developers who wish to respect user privacy, and minimize third-party tracking:
+
+- Servers can (and should) set the cookie [SameSite attribute](/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value) to specify whether or not third-party cookies may be sent.
+- [Cookies Having Independent Partitioned State (CHIPS)](/en-US/docs/Web/Privacy/Partitioned_cookies) enables developers to opt-in their cookies to partitioned storage, with a separate cookie jar per top-level site. This enables valid non-tracking uses of third-party cookies to continue working in browsers that do not allow cookies to be used for third-party tracking.
 
 ### Cookie-related regulations
 
@@ -252,8 +256,7 @@ There are some techniques designed to recreate cookies after they're deleted. Th
 - {{HTTPHeader("Cookie")}}
 - {{domxref("Document.cookie")}}
 - {{domxref("Navigator.cookieEnabled")}}
-- [SameSite cookies](/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
-- [Inspecting cookies using the Storage Inspector](/en-US/docs/Tools/Storage_Inspector)
+- [Inspecting cookies using the Storage Inspector](https://firefox-source-docs.mozilla.org/devtools-user/storage_inspector/index.html)
 - [Cookie specification: RFC 6265](https://datatracker.ietf.org/doc/html/rfc6265)
 - [HTTP cookie on Wikipedia](https://en.wikipedia.org/wiki/HTTP_cookie)
 - [Cookies, the GDPR, and the ePrivacy Directive](https://gdpr.eu/cookies/)

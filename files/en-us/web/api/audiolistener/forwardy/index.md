@@ -1,16 +1,11 @@
 ---
-title: AudioListener.forwardY
+title: "AudioListener: forwardY property"
+short-title: forwardY
 slug: Web/API/AudioListener/forwardY
-tags:
-  - API
-  - Audio
-  - AudioListener
-  - Property
-  - Reference
-  - Web Audio API
-  - forwardY
+page-type: web-api-instance-property
 browser-compat: api.AudioListener.forwardY
 ---
+
 {{ APIRef("Web Audio API") }}
 
 The `forwardY` read-only property of the {{ domxref("AudioListener") }} interface is an {{domxref("AudioParam")}} representing the y value of the direction vector defining the forward direction the listener is pointing in.
@@ -21,9 +16,9 @@ The `forwardY` read-only property of the {{ domxref("AudioListener") }} interfac
 
 An {{domxref("AudioParam")}}. Its default value is 0, and it can range between positive and negative infinity.
 
-## Example
+## Examples
 
-See [BaseAudioContext.createPanner()](/en-US/docs/Web/API/BaseAudioContext/createPanner#example) for example code.
+See [BaseAudioContext.createPanner()](/en-US/docs/Web/API/BaseAudioContext/createPanner#examples) for example code.
 
 ## Specifications
 

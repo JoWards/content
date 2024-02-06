@@ -1,17 +1,12 @@
 ---
-title: ElementInternals.ariaDescription
+title: "ElementInternals: ariaDescription property"
+short-title: ariaDescription
 slug: Web/API/ElementInternals/ariaDescription
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaDescription
-  - AriaAttributes
-  - AriaMixin
-  - ElementInternals
+page-type: web-api-instance-property
 browser-compat: api.ElementInternals.ariaDescription
 ---
-{{DefaultAPISidebar("DOM")}}
+
+{{APIRef("Web Components")}}
 
 The **`ariaDescription`** property of the {{domxref("ElementInternals")}} interface reflects the value of the [`aria-description`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-description) attribute, which defines a string value that describes or annotates the current element.
 
@@ -19,7 +14,7 @@ The **`ariaDescription`** property of the {{domxref("ElementInternals")}} interf
 
 ## Value
 
-A {{domxref("DOMString")}}.
+A string.
 
 ## Examples
 

@@ -1,19 +1,11 @@
 ---
-title: TextTrackList.length
+title: "TextTrackList: length property"
+short-title: length
 slug: Web/API/TextTrackList/length
-tags:
-  - API
-  - HTML DOM
-  - Media
-  - Property
-  - Read-only
-  - Reference
-  - TextTrackList
-  - length
-  - list
-  - track
+page-type: web-api-instance-property
 browser-compat: api.TextTrackList.length
 ---
+
 {{APIRef("HTML DOM")}}
 
 The read-only **{{domxref("TextTrackList")}}**
@@ -30,14 +22,14 @@ A number indicating how many text tracks are included in the
 `TextTrackList`. Each track can be accessed by treating the
 `TextTrackList` as an array of objects of type {{domxref("TextTrack")}}.
 
-## Example
+## Examples
 
 This snippet gets the number of text tracks in the first media element found in the
 {{Glossary("DOM")}} by {{domxref("Document.querySelector", "querySelector()")}}.
 
 ```js
-var mediaElem = document.querySelector("video, audio");
-var numTextTracks = 0;
+const mediaElem = document.querySelector("video, audio");
+let numTextTracks = 0;
 
 if (mediaElem.textTracks) {
   numTextTracks = mediaElem.textTracks.length;

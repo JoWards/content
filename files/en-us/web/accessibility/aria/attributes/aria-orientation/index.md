@@ -1,13 +1,8 @@
 ---
-title: 'aria-orientation'
+title: aria-orientation
 slug: Web/Accessibility/ARIA/Attributes/aria-orientation
-tags: 
-  - Accessibility
-  - ARIA
-  - ARIA attribute
-  - ARIA property
-  - aria-orientation
-  - Reference
+page-type: aria-attribute
+spec-urls: https://w3c.github.io/aria/#aria-orientation
 ---
 
 The `aria-orientation` attribute indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
@@ -36,7 +31,7 @@ Each [`separator`](/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) shou
 
 When nodes in a tree are arranged horizontally instead of its default vertical orientation, or when a tab list is vertical instead of its default horizontal, the down arrow performs as a right arrow normally would, and the up arrow performs as a left arrow normally would. In these instances, assistive technology users need to know the widget's orientation so as to navigate correctly.
 
-Up and down arrows are generally available for normal browser scrolling, even when focus is inside a tree or tab list. Include `aria-orientation` to enable alerting users when a widget doesn't have the default, expected orientation and associated navigation.  
+Up and down arrows are generally available for normal browser scrolling, even when focus is inside a tree or tab list. Include `aria-orientation` to enable alerting users when a widget doesn't have the default, expected orientation and associated navigation.
 
 Always remember that ARIA only modifies how assistive technology presents content to your users; altering the behavior of arrow keys requires JavaScript.
 
@@ -48,13 +43,13 @@ Always remember that ARIA only modifies how assistive technology presents conten
   - : The element's orientation is unknown/ambiguous.
 - `vertical`
   - : The element is oriented vertically.
-  
-## ARIAMixin API
+
+## Associated interfaces
 
 - {{domxref("Element.ariaOrientation")}}
-  - : The  [`ariaOrientation`](/en-US/docs/Web/API/Element/ariaOrientation) property, part of the {{domxref("Element")}} interface, reflects the value of the `aria-orientation` attribute.
+  - : The [`ariaOrientation`](/en-US/docs/Web/API/Element/ariaOrientation) property, part of the {{domxref("Element")}} interface, reflects the value of the `aria-orientation` attribute.
 - {{domxref("ElementInternals.ariaOrientation")}}
-  - : The  [`ariaOrientation`](/en-US/docs/Web/API/ElementInternals/ariaOrientation) property, part of the {{domxref("ElementInternals")}} interface, reflects the value of the `aria-orientation` attribute.
+  - : The [`ariaOrientation`](/en-US/docs/Web/API/ElementInternals/ariaOrientation) property, part of the {{domxref("ElementInternals")}} interface, reflects the value of the `aria-orientation` attribute.
 
 ## Associated roles
 
@@ -78,9 +73,7 @@ Inherited into roles:
 
 ## Specifications
 
-| Specification | Status |
-| ------------- | ------  |
-| {{SpecName("ARIA","#aria-orientation","ARIA: aria-orientation Attribute")}}  | {{Spec2('ARIA')}} |
+{{Specifications}}
 
 ## See Also
 

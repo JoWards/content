@@ -1,17 +1,13 @@
 ---
 title: ElementInternals.ariaColIndexText
 slug: Web/API/ElementInternals/ariaColIndexText
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaColIndexText
-  - AriaAttributes
-  - AriaMixin
-  - ElementInternals
+page-type: web-api-instance-property
+status:
+  - experimental
 browser-compat: api.ElementInternals.ariaColIndexText
 ---
-{{DefaultAPISidebar("DOM")}}
+
+{{APIRef("Web Components")}}{{SeeCompatTable}}
 
 The **`ariaColIndexText`** property of the {{domxref("ElementInternals")}} interface reflects the value of the [`aria-colindextext`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-colindextext) attribute, which defines a human readable text alternative of aria-colindex.
 
@@ -19,7 +15,7 @@ The **`ariaColIndexText`** property of the {{domxref("ElementInternals")}} inter
 
 ## Value
 
-A {{domxref("DOMString")}}.
+A string.
 
 ## Examples
 
@@ -39,4 +35,4 @@ this.internals_.ariaColIndexText = "Column name";
 
 ## See also
 
-- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Roles/Table_Role)
+- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Roles/table_role)

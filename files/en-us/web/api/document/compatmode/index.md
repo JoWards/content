@@ -1,14 +1,11 @@
 ---
-title: Document.compatMode
+title: "Document: compatMode property"
+short-title: compatMode
 slug: Web/API/Document/compatMode
-tags:
-  - API
-  - DOM
-  - Document
-  - Property
-  - Reference
+page-type: web-api-instance-property
 browser-compat: api.Document.compatMode
 ---
+
 {{ ApiRef("DOM") }}
 
 The **`Document.compatMode`** read-only property indicates
@@ -26,10 +23,10 @@ An enumerated value that can be:
 > **Note:** All these modes are now standardized, so the older "standards"
 > and "almost standards" names are nonsensical and no longer used in standards.
 
-## Example
+## Examples
 
 ```js
-if (document.compatMode == "BackCompat") {
+if (document.compatMode === "BackCompat") {
   // in Quirks mode
 }
 ```

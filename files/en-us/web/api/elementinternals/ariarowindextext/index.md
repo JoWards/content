@@ -1,17 +1,13 @@
 ---
 title: ElementInternals.ariaRowIndexText
 slug: Web/API/ElementInternals/ariaRowIndexText
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaRowIndexText
-  - AriaAttributes
-  - AriaMixin
-  - ElementInternals
+page-type: web-api-instance-property
+status:
+  - experimental
 browser-compat: api.ElementInternals.ariaRowIndexText
 ---
-{{DefaultAPISidebar("DOM")}}
+
+{{APIRef("Web Components")}}{{SeeCompatTable}}
 
 The **`ariaRowIndexText`** property of the {{domxref("ElementInternals")}} interface reflects the value of the [`aria-rowindextext`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindextext) attribute, which defines a human readable text alternative of aria-rowindex.
 
@@ -19,7 +15,7 @@ The **`ariaRowIndexText`** property of the {{domxref("ElementInternals")}} inter
 
 ## Value
 
-A {{domxref("DOMString")}}.
+A string.
 
 ## Examples
 
@@ -39,4 +35,4 @@ this.internals_.ariaRowIndexText = "Heading row";
 
 ## See also
 
-- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Roles/Table_Role)
+- [ARIA: table role](/en-US/docs/Web/Accessibility/ARIA/Roles/table_role)

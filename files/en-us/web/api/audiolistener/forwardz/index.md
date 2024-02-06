@@ -1,16 +1,11 @@
 ---
-title: AudioListener.forwardZ
+title: "AudioListener: forwardZ property"
+short-title: forwardZ
 slug: Web/API/AudioListener/forwardZ
-tags:
-  - API
-  - Audio
-  - AudioListener
-  - Property
-  - Reference
-  - Web Audio API
-  - forwardZ
+page-type: web-api-instance-property
 browser-compat: api.AudioListener.forwardZ
 ---
+
 {{ APIRef("Web Audio API") }}
 
 The `forwardZ` read-only property of the {{ domxref("AudioListener") }} interface is an {{domxref("AudioParam")}} representing the z value of the direction vector defining the forward direction the listener is pointing in.
@@ -21,9 +16,9 @@ The `forwardZ` read-only property of the {{ domxref("AudioListener") }} interfac
 
 An {{domxref("AudioParam")}}. Its default value is -1, and it can range between positive and negative infinity.
 
-## Example
+## Examples
 
-See [`BaseAudioContext.createPanner()`](/en-US/docs/Web/API/BaseAudioContext/createPanner#example) for example code.
+See [`BaseAudioContext.createPanner()`](/en-US/docs/Web/API/BaseAudioContext/createPanner#examples) for example code.
 
 ## Specifications
 

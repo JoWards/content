@@ -1,17 +1,12 @@
 ---
-title: ElementInternals.ariaHasPopup
+title: "ElementInternals: ariaHasPopup property"
+short-title: ariaHasPopup
 slug: Web/API/ElementInternals/ariaHasPopup
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaHasPopup
-  - AriaAttributes
-  - AriaMixin
-  - ElementInternals
+page-type: web-api-instance-property
 browser-compat: api.ElementInternals.ariaHasPopup
 ---
-{{DefaultAPISidebar("DOM")}}
+
+{{APIRef("Web Components")}}
 
 The **`ariaHasPopup`** property of the {{domxref("ElementInternals")}} interface reflects the value of the [`aria-haspopup`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup) attribute, which indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -19,7 +14,7 @@ The **`ariaHasPopup`** property of the {{domxref("ElementInternals")}} interface
 
 ## Value
 
-A {{domxref("DOMString")}} with one of the following values:
+A string with one of the following values:
 
 - `"false"`
   - : The element does not have a popup.

@@ -1,11 +1,11 @@
 ---
-title: BroadcastChannel.postMessage()
+title: "BroadcastChannel: postMessage() method"
+short-title: postMessage()
 slug: Web/API/BroadcastChannel/postMessage
-tags:
-  - Method
-  - Reference
+page-type: web-api-instance-method
 browser-compat: api.BroadcastChannel.postMessage
 ---
+
 {{APIRef("BroadCastChannel API")}}
 
 The **`BroadcastChannel.postMessage()`** sends a message,
@@ -18,8 +18,8 @@ targeted at each {{domxref("BroadcastChannel")}} bound to the channel.
 
 ## Syntax
 
-```js
-channel.postMessage(message);
+```js-nolint
+channel.postMessage(message)
 ```
 
 ### Parameters
@@ -31,6 +31,13 @@ channel.postMessage(message);
 ### Return value
 
 None.
+
+### Exceptions
+
+- `InvalidStateError` {{domxref("DOMException")}}
+  - : Thrown if the {{domxref("BroadcastChannel")}} has already been closed.
+- `DataCloneError` {{domxref("DOMException")}}
+  - : Thrown if any part of the input data is not serializable.
 
 ## Specifications
 

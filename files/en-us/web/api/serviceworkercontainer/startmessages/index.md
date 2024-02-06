@@ -1,16 +1,12 @@
 ---
-title: ServiceWorkerContainer.startMessages()
+title: "ServiceWorkerContainer: startMessages() method"
+short-title: startMessages()
 slug: Web/API/ServiceWorkerContainer/startMessages
-tags:
-  - API
-  - Experimental
-  - Reference
-  - Service Workers
-  - ServiceWorkerContainer
-  - startMessages
+page-type: web-api-instance-method
 browser-compat: api.ServiceWorkerContainer.startMessages
 ---
-{{APIRef("Service Workers API")}}
+
+{{APIRef("Service Workers API")}}{{SecureContext_Header}}
 
 The **`startMessages()`** method of
 the {{domxref("ServiceWorkerContainer")}} interface explicitly starts the flow of
@@ -23,7 +19,7 @@ earlier, even before that page's content has finished loading.
 By default, all messages sent from a page's controlling service worker to the page
 (using {{domxref("Client.postMessage()")}}) are queued while the page is loading, and
 get dispatched once the page's HTML document has been loaded and parsed (i.e. after the
-{{event("DOMContentLoaded")}} event fires). It's possible to start dispatching these
+{{domxref("Document/DOMContentLoaded_event", "DOMContentLoaded")}} event fires). It's possible to start dispatching these
 messages earlier by calling {{domxref("ServiceWorkerContainer.startMessages()")}}, for
 example if you've invoked a message handler using
 {{domxref("EventTarget.addEventListener()")}} before the page has finished loading, but
@@ -35,8 +31,8 @@ want to start processing the messages right away.
 
 ## Syntax
 
-```js
-serviceWorkerContainer.startMessages();
+```js-nolint
+startMessages()
 ```
 
 ### Parameters
@@ -50,16 +46,16 @@ None.
 ## Examples
 
 ```js
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/sw.js')
-           .then(function() { console.log('Service Worker Registered'); });
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js").then(() => {
+    console.log("Service Worker Registered");
+  });
 }
 
-// ...
+// …
 
-navigator.serviceWorker.addEventListener('message', (e) => {
-  // ...
+navigator.serviceWorker.addEventListener("message", (e) => {
+  // …
 });
 
 navigator.serviceWorker.startMessages();

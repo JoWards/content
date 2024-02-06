@@ -1,17 +1,12 @@
 ---
-title: ElementInternals.ariaValueNow
+title: "ElementInternals: ariaValueNow property"
+short-title: ariaValueNow
 slug: Web/API/ElementInternals/ariaValueNow
-tags:
-  - API
-  - Property
-  - Reference
-  - ariaValueNow
-  - AriaAttributes
-  - AriaMixin
-  - ElementInternals
+page-type: web-api-instance-property
 browser-compat: api.ElementInternals.ariaValueNow
 ---
-{{DefaultAPISidebar("DOM")}}
+
+{{APIRef("Web Components")}}
 
 The **`ariaValueNow`** property of the {{domxref("ElementInternals")}} interface reflects the value of the [`aria-valuenow`](/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuenow) attribute, which defines the current value for a range widget.
 
@@ -19,7 +14,7 @@ The **`ariaValueNow`** property of the {{domxref("ElementInternals")}} interface
 
 ## Value
 
-A {{domxref("DOMString")}} which contains a number.
+A string which contains a number.
 
 ## Examples
 

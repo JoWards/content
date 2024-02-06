@@ -1,103 +1,46 @@
 ---
-title: '<template>: The Content Template element'
+title: "<template>: The Content Template element"
 slug: Web/HTML/Element/template
-tags:
-  - Element
-  - HTML
-  - HTML Web Components
-  - HTML:Flow content
-  - HTML:Metadata content
-  - HTML:Phrasing content
-  - HTML:Script-supporting element
-  - Reference
-  - Template
-  - Web
-  - Web Components
+page-type: html-element
 browser-compat: html.elements.template
 ---
 
-{{HTMLRef}}
+{{HTMLSidebar}}
 
-The **`<template>`** [HTML](/en-US/docs/Web/HTML) element is a mechanism for holding {{Glossary("HTML")}} that is not to be rendered immediately when a page is loaded but may be instantiated subsequently during runtime using JavaScript.
-
-Think of a template as a content fragment that is being stored for subsequent use in the document. While the parser does process the contents of the **`<template>`** element while loading the page, it does so only to ensure that those contents are valid; the element's contents are not rendered, however.
-
-<table class="properties">
-  <tbody>
-    <tr>
-      <th scope="row">
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories"
-          >Content categories</a
-        >
-      </th>
-      <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content"
-          >Metadata content</a
-        >,
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#flow_content"
-          >flow content</a
-        >,
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content"
-          >phrasing content</a
-        >,
-        <a
-          href="/en-US/docs/Web/Guide/HTML/Content_categories#script-supporting_elements"
-          >script-supporting element</a
-        >
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Permitted content</th>
-      <td>No restrictions</td>
-    </tr>
-    <tr>
-      <th scope="row">Tag omission</th>
-      <td>{{no_tag_omission}}</td>
-    </tr>
-    <tr>
-      <th scope="row">Permitted parents</th>
-      <td>
-        Any element that accepts
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#metadata_content"
-          >metadata content</a
-        >,
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content"
-          >phrasing content</a
-        >, or
-        <a
-          href="/en-US/docs/Web/Guide/HTML/Content_categories#script-supporting_elements"
-          >script-supporting elements</a
-        >. Also allowed as a child of a {{HTMLElement("colgroup")}}
-        element that does <em>not</em> have a
-        {{htmlattrxref("span", "colgroup")}} attribute.
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Implicit ARIA role</th>
-      <td>
-        <a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role"
-          >No corresponding role</a
-        >
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Permitted ARIA roles</th>
-      <td>No <code>role</code> permitted</td>
-    </tr>
-    <tr>
-      <th scope="row">DOM interface</th>
-      <td>{{domxref("HTMLTemplateElement")}}</td>
-    </tr>
-  </tbody>
-</table>
+The **`<template>`** [HTML](/en-US/docs/Web/HTML) element serves as a mechanism for holding {{Glossary("HTML")}} fragments, which can either be used later via JavaScript or generated immediately into shadow DOM.
 
 ## Attributes
 
-This element only includes the [global attributes](/en-US/docs/Web/HTML/Global_attributes).
+This element includes the [global attributes](/en-US/docs/Web/HTML/Global_attributes).
 
-However, the {{domxref("HTMLTemplateElement")}} has a {{domxref("HTMLTemplateElement.content", "content")}} property, which is a read-only {{domxref("DocumentFragment")}} containing the DOM subtree which the template represents. Note that directly using the value of the {{domxref("HTMLTemplateElement.content", "content")}} could lead to unexpected behavior, see [Avoiding DocumentFragment pitfall](#avoiding_documentfragment_pitfall) section below.
+- `shadowrootmode`
+
+  - : Creates a [shadow root](/en-US/docs/Glossary/Shadow_tree) for the parent element. It is a declarative version of the {{domxref("Element.attachShadow()")}} method and accepts the same {{glossary("enumerated")}} values.
+
+    - `open`
+
+      - : Exposes the internal shadow root DOM for JavaScript (recommended for most use cases).
+
+    - `closed`
+
+      - : Hides the internal shadow root DOM from JavaScript.
+
+    > **Note:** This is a feature of the HTML parser that cannot be used post-parsing by setting the `shadowrootmode` attribute through JavaScript. Only allowed values will create the shadow root; any other values, including empty ones, won't trigger this behavior.
+
+    > **Note:** You may find the non-standard `shadowroot` attribute in older tutorials and examples that used to be supported in Chrome 90-110. This attribute has since been removed and replaced by the standard `shadowrootmode` attribute.
+
+## Usage notes
+
+There are two main ways to use the `<template>` element:
+
+1. By default, the element's content is not rendered, only parsed into a [document fragment](/en-US/docs/Web/API/DocumentFragment). Using the {{domxref("HTMLTemplateElement.content", "content")}} property in JavaScript, this fragment can be cloned via the {{domxref("Node.cloneNode", "cloneNode")}} method and inserted into the DOM.
+2. If the element contains the `shadowrootmode` attribute, the HTML parser will immediately generate a shadow DOM. The element is replaced in the DOM by its content wrapped in a [shadow root](/en-US/docs/Glossary/Shadow_tree).
+
+The corresponding {{domxref("HTMLTemplateElement")}} interface includes a standard {{domxref("HTMLTemplateElement.content", "content")}} property (without an equivalent content/markup attribute). This `content` property is read-only and holds a {{domxref("DocumentFragment")}} that contains the DOM subtree represented by the template. Be careful when using the `content` property because the returned `DocumentFragment` can exhibit unexpected behavior. For more details, see the [Avoiding DocumentFragment pitfalls](#avoiding_documentfragment_pitfalls) section below.
 
 ## Examples
+
+### Generating table rows
 
 First we start with the HTML portion of the example.
 
@@ -129,29 +72,27 @@ Now that the table has been created and the template defined, we use JavaScript 
 ```js
 // Test to see if the browser supports the HTML template element by checking
 // for the presence of the template element's content attribute.
-if ('content' in document.createElement('template')) {
+if ("content" in document.createElement("template")) {
+  // Instantiate the table with the existing HTML tbody
+  // and the row with the template
+  const tbody = document.querySelector("tbody");
+  const template = document.querySelector("#productrow");
 
-    // Instantiate the table with the existing HTML tbody
-    // and the row with the template
-    var tbody = document.querySelector("tbody");
-    var template = document.querySelector('#productrow');
+  // Clone the new row and insert it into the table
+  const clone = template.content.cloneNode(true);
+  let td = clone.querySelectorAll("td");
+  td[0].textContent = "1235646565";
+  td[1].textContent = "Stuff";
 
-    // Clone the new row and insert it into the table
-    var clone = template.content.cloneNode(true);
-    var td = clone.querySelectorAll("td");
-    td[0].textContent = "1235646565";
-    td[1].textContent = "Stuff";
+  tbody.appendChild(clone);
 
-    tbody.appendChild(clone);
+  // Clone the new row and insert it into the table
+  const clone2 = template.content.cloneNode(true);
+  td = clone2.querySelectorAll("td");
+  td[0].textContent = "0384928528";
+  td[1].textContent = "Acme Kidney Beans 2";
 
-    // Clone the new row and insert it into the table
-    var clone2 = template.content.cloneNode(true);
-    td = clone2.querySelectorAll("td");
-    td[0].textContent = "0384928528";
-    td[1].textContent = "Acme Kidney Beans 2";
-
-    tbody.appendChild(clone2);
-
+  tbody.appendChild(clone2);
 } else {
   // Find another way to add the rows to the table because
   // the HTML template element is not supported.
@@ -169,11 +110,52 @@ table td {
 }
 ```
 
-{{EmbedLiveSample("Examples", 500, 120)}}
+{{EmbedLiveSample("Table row generation", 500, 120)}}
 
-## Avoiding DocumentFragment pitfall
+### Implementing a declarative shadow DOM
 
-A {{domxref("DocumentFragment")}} is not a valid target for various events, as such it is often preferable to clone or refer to the elements within it.
+In this example, a hidden support warning is included at the beginning of the markup. This warning is later set to be displayed via JavaScript if the browser doesn't support the `shadowrootmode` attribute. Next, there are two {{HTMLElement("article")}} elements, each containing nested {{HTMLElement("style")}} elements with different behaviors. The first `<style>` element is global to the whole document. The second one is scoped to the shadow root generated in place of the `<template>` element because of the presence of the `shadowrootmode` attribute.
+
+```html
+<p hidden>
+  ⛔ Your browser doesn't support <code>shadowrootmode</code> attribute yet.
+</p>
+<article>
+  <style>
+    p {
+      padding: 8px;
+      background-color: wheat;
+    }
+  </style>
+  <p>I'm in the DOM.</p>
+</article>
+<article>
+  <template shadowrootmode="open">
+    <style>
+      p {
+        padding: 8px;
+        background-color: plum;
+      }
+    </style>
+    <p>I'm in the shadow DOM.</p>
+  </template>
+</article>
+```
+
+```js
+const isShadowRootModeSupported =
+  HTMLTemplateElement.prototype.hasOwnProperty("shadowRootMode");
+
+document
+  .querySelector("p[hidden]")
+  .toggleAttribute("hidden", isShadowRootModeSupported);
+```
+
+{{EmbedGHLiveSample("dom-examples/shadow-dom/shadowrootmode/scoping.html", "", "120")}}
+
+## Avoiding DocumentFragment pitfalls
+
+When a {{domxref("DocumentFragment")}} value is passed, {{domxref("Node.appendChild")}} and similar methods move only the _child nodes_ of that value into the target node. Therefore, it is usually preferable to attach event handlers to the children of a `DocumentFragment`, rather than to the `DocumentFragment` itself.
 
 Consider the following HTML and JavaScript:
 
@@ -201,16 +183,87 @@ const firstClone = template.content.cloneNode(true);
 firstClone.addEventListener("click", clickHandler);
 container.appendChild(firstClone);
 
-const secondClone = template.content.firstElementChild.cloneNode(true);
-secondClone.addEventListener("click", clickHandler);
+const secondClone = template.content.cloneNode(true);
+secondClone.children[0].addEventListener("click", clickHandler);
 container.appendChild(secondClone);
 ```
 
 ### Result
 
-`firstClone` is a DocumentFragment instance, so while it gets appended inside the container as expected, clicking on it does not trigger the click event. `secondClone` is an [HTMLDivElement](/en-US/docs/Web/API/HTMLDivElement) instance, clicking on it works as one would expect.
+Since `firstClone` is a `DocumentFragment`, only its children are added to `container` when `appendChild` is called; the event handlers of `firstClone` are not copied. In contrast, because an event handler is added to the first _child node_ of `secondClone`, the event handler is copied when `appendChild` is called, and clicking on it works as one would expect.
 
 {{EmbedLiveSample('Avoiding_DocumentFragment_pitfall')}}
+
+## Technical summary
+
+<table class="properties">
+  <tbody>
+    <tr>
+      <th scope="row">
+        <a href="/en-US/docs/Web/HTML/Content_categories"
+          >Content categories</a
+        >
+      </th>
+      <td>
+        <a href="/en-US/docs/Web/HTML/Content_categories#metadata_content"
+          >Metadata content</a
+        >,
+        <a href="/en-US/docs/Web/HTML/Content_categories#flow_content"
+          >flow content</a
+        >,
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content"
+          >phrasing content</a
+        >,
+        <a
+          href="/en-US/docs/Web/HTML/Content_categories#script-supporting_elements"
+          >script-supporting element</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Permitted content</th>
+      <td>No restrictions</td>
+    </tr>
+    <tr>
+      <th scope="row">Tag omission</th>
+      <td>{{no_tag_omission}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Permitted parents</th>
+      <td>
+        Any element that accepts
+        <a href="/en-US/docs/Web/HTML/Content_categories#metadata_content"
+          >metadata content</a
+        >,
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content"
+          >phrasing content</a
+        >, or
+        <a
+          href="/en-US/docs/Web/HTML/Content_categories#script-supporting_elements"
+          >script-supporting elements</a
+        >. Also allowed as a child of a {{HTMLElement("colgroup")}}
+        element that does <em>not</em> have a
+        <a href="/en-US/docs/Web/HTML/Element/colgroup#span"><code>span</code></a> attribute.
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Implicit ARIA role</th>
+      <td>
+        <a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role"
+          >No corresponding role</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Permitted ARIA roles</th>
+      <td>No <code>role</code> permitted</td>
+    </tr>
+    <tr>
+      <th scope="row">DOM interface</th>
+      <td>{{domxref("HTMLTemplateElement")}}</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Specifications
 
@@ -222,5 +275,11 @@ container.appendChild(secondClone);
 
 ## See also
 
-- Web components: {{HTMLElement("slot")}} (and historical: {{HTMLElement("shadow")}})
-- [Using templates and slots](/en-US/docs/Web/Web_Components/Using_templates_and_slots)
+- [`part`](/en-US/docs/Web/HTML/Global_attributes#part) and [`exportparts`](/en-US/docs/Web/HTML/Global_attributes#exportparts) HTML attributes
+- {{HTMLElement("slot")}} HTML element
+- {{CSSXref(":host")}}, {{CSSXref(":host_function", ":host()")}}, and {{CSSXref(":host-context", ":host-context()")}} CSS pseudo-classes
+- {{CSSXref("::part")}} and {{CSSXref("::slotted")}} CSS pseudo-elements
+- [`ShadowRoot`]("/en-US/docs/Web/API/ShadowRoot) interface
+- [Using templates and slots](/en-US/docs/Web/API/Web_components/Using_templates_and_slots)
+- [CSS scoping](/en-US/docs/Web/CSS/CSS_scoping) module
+- [Declarative shadow DOM](https://developer.chrome.com/docs/css-ui/declarative-shadow-dom) on developer.chrome.com (2023)

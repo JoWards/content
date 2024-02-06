@@ -1,22 +1,21 @@
 ---
 title: CookieStore
 slug: Web/API/CookieStore
-tags:
-  - API
-  - Interface
-  - Reference
-  - CookieStore
+page-type: web-api-interface
 browser-compat: api.CookieStore
 ---
-{{securecontext_header}}{{DefaultAPISidebar("Cookie Store API")}}
 
-The **`CookieStore`** interface of the {{domxref('Cookie Store API')}} provides methods for getting and setting cookies asynchronously from either a page or a service worker.
+{{securecontext_header}}{{APIRef("Cookie Store API")}}
+
+The **`CookieStore`** interface of the {{domxref("Cookie Store API", "", "", "nocode")}} provides methods for getting and setting cookies asynchronously from either a page or a service worker.
 
 The `CookieStore` is accessed via attributes in the global scope in a {{domxref("Window")}} or {{domxref("ServiceWorkerGlobalScope")}} context. Therefore there is no constructor.
 
 {{InheritanceDiagram}}
 
-## Methods
+{{AvailableInWorkers}}
+
+## Instance methods
 
 - {{domxref("CookieStore.delete()")}}
   - : The `delete()` method deletes a cookie with the given name or options object, it returns a {{jsxref("Promise")}} that resolves when the deletion completes.
@@ -29,29 +28,31 @@ The `CookieStore` is accessed via attributes in the global scope in a {{domxref(
 
 ## Events
 
-- {{domxref("CookieStore.change_event")}}
+- {{domxref("CookieStore.change_event", "change")}}
   - : The `change` event fires when a change is made to any cookie.
 
 ## Examples
 
-In this example we set a cookie and write to the console feedback as to whether the operation succeeded or failed.
+In this example, we set a cookie and write to the console feedback as to whether the operation succeeded or failed.
 
 ```js
 const day = 24 * 60 * 60 * 1000;
-cookieStore.set({
-  name: "cookie1",
-  value: "cookie1-value",
-  expires: Date.now() + day,
-  domain: "example.com"
-})
-.then(
-  function() {
-    console.log("It worked!");
-  },
-  function(reason) {
-    console.error("It failed: ", reason);
-  }
-);
+
+cookieStore
+  .set({
+    name: "cookie1",
+    value: "cookie1-value",
+    expires: Date.now() + day,
+    domain: "example.com",
+  })
+  .then(
+    () => {
+      console.log("It worked!");
+    },
+    (reason) => {
+      console.error("It failed: ", reason);
+    },
+  );
 ```
 
 ## Specifications

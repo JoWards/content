@@ -1,17 +1,11 @@
 ---
-title: Document.designMode
+title: "Document: designMode property"
+short-title: designMode
 slug: Web/API/Document/designMode
-tags:
-  - API
-  - Document
-  - HTML DOM
-  - NeedsContent
-  - NeedsSpecTable
-  - Property
-  - Reference
-  - editor
+page-type: web-api-instance-property
 browser-compat: api.Document.designMode
 ---
+
 {{ApiRef()}}
 
 **`document.designMode`** controls whether the entire document
@@ -26,7 +20,7 @@ no longer supported. In IE6-10, the value is capitalized.
 A string indicating whether `designMode` is (or should be) set to on or off.
 Valid values are `on` and `off`.
 
-## Example
+## Examples
 
 Make an {{HTMLElement("iframe")}}'s document editable:
 

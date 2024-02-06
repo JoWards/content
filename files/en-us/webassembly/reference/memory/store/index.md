@@ -1,19 +1,16 @@
 ---
 title: Store
 slug: WebAssembly/Reference/Memory/Store
-tags:
-  - WebAssembly
-  - wasm
-  - Reference
-  - Memory
+page-type: webassembly-instruction
 ---
+
 {{WebAssemblySidebar}}
 
 The **`store`** instructions, are used to store a number in memory.
 
-For the integer numbers, you can also store a wide typed number as a narrower number in memory, e.g. store a 32 bit number in a 8 bit slot (**`i32.store8`**). If the number doesn't fit in the narrower number type it will wrap.
+For the integer numbers, you can also store a wide typed number as a narrower number in memory, e.g. store a 32-bit number in an 8-bit slot (**`i32.store8`**). If the number doesn't fit in the narrower number type it will wrap.
 
-{{EmbedInteractiveExample("pages/wat/store.html")}}
+{{EmbedInteractiveExample("pages/wat/store.html", "tabbed-taller")}}
 
 ## Syntax
 

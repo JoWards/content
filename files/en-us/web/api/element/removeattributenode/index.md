@@ -1,15 +1,11 @@
 ---
-title: Element.removeAttributeNode()
+title: "Element: removeAttributeNode() method"
+short-title: removeAttributeNode()
 slug: Web/API/Element/removeAttributeNode
-tags:
-  - API
-  - DOM
-  - Element
-  - Method
-  - NeedsSpecTable
-  - Reference
+page-type: web-api-instance-method
 browser-compat: api.Element.removeAttributeNode
 ---
+
 {{ APIRef("DOM") }}
 
 The **`removeAttributeNode()`** method of the
@@ -17,7 +13,7 @@ The **`removeAttributeNode()`** method of the
 
 ## Syntax
 
-```js
+```js-nolint
 removeAttributeNode(attributeNode)
 ```
 
@@ -35,12 +31,12 @@ The attribute node that was removed.
 - `NotFoundError` {{DOMxRef("DOMException")}}
   - : Thrown when the element's attribute list does not contain the attribute node.
 
-## Example
+## Examples
 
 ```js
 // Given: <div id="top" align="center" />
-var d = document.getElementById("top");
-var d_align = d.getAttributeNode("align");
+const d = document.getElementById("top");
+const d_align = d.getAttributeNode("align");
 d.removeAttributeNode(d_align);
 // align is now removed: <div id="top" />
 ```

@@ -1,18 +1,14 @@
 ---
-title: USBDevice.deviceProtocol
+title: "USBDevice: deviceProtocol property"
+short-title: deviceProtocol
 slug: Web/API/USBDevice/deviceProtocol
-tags:
-  - API
-  - Property
-  - Reference
-  - USB
-  - USBDevice
-  - WebUSB
-  - WebUSB API
-  - deviceProtocol
+page-type: web-api-instance-property
+status:
+  - experimental
 browser-compat: api.USBDevice.deviceProtocol
 ---
-{{SeeCompatTable}}{{APIRef("WebUSB API")}}
+
+{{SeeCompatTable}}{{APIRef("WebUSB API")}}{{SecureContext_Header}}
 
 The **`deviceProtocol`** read only property of the
 {{domxref("USBDevice")}} interface one of three properties that identify USB devices for
